@@ -1,0 +1,3 @@
+[submodule "src/lib/DeftJS"]
+	path = src/lib/DeftJS
+	url = https://github.com/deftjs/DeftJS.git
