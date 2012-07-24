@@ -3,6 +3,7 @@ Ext.define('Todo.model.TodoListModel', {
     config: {
 
         fields: [
+            {id: '_id', type: 'string'},
             {name: 'name', type: 'string'}
         ],
 
@@ -12,7 +13,7 @@ Ext.define('Todo.model.TodoListModel', {
         ],
 
         associations: [
-            { type: 'hasMany', model: 'Todo.model.TodoItemModel', name: 'todoItems' }
+            { type: 'hasMany', model: 'Todo.model.TodoItemModel', name: 'todoItems', associationKey: 'todoItems' }
         ]
     },
 

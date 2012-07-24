@@ -17,7 +17,7 @@ Ext.define('Todo.model.TodoItemModel', {
         ],
 
         associations: [
-            { type: 'belongsTo', model: 'TodoListModel' }
+            { type: 'belongsTo', model: 'Todo.model.TodoListModel' }
         ]
     },
 

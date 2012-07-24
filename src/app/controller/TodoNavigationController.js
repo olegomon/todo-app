@@ -26,11 +26,11 @@ Ext.define('Todo.controller.TodoNavigationController', {
             },
 
             todoGroupList: {
-                itemtap: 'onGroupListItemTap'
+                itemtap: 'onTodoListItemTap'
             },
 
             todoList: {
-                itemtap: 'onTodoListItemTap'
+                itemtap: 'onTodoItemTap'
             }
         }
     },
@@ -95,7 +95,7 @@ Ext.define('Todo.controller.TodoNavigationController', {
         });
     },
 
-    onTodoListItemTap: function (list, index, target, record, e, eOpts) {
+    onTodoItemTap: function (list, index, target, record, e, eOpts) {
         var navigation = this.getTodoNavigation();
         navigation.push({
             xtype : 'todoitemdetail',
@@ -108,11 +108,12 @@ Ext.define('Todo.controller.TodoNavigationController', {
         }, 300);
     },
 
-    onGroupListItemTap: function (list, index, target, record, e, eOpts) {
+    onTodoListItemTap: function (list, index, target, record, e, eOpts) {
         var navigation = this.getTodoNavigation();
         navigation.push({
             xtype: 'todoitemlist',
-            title: record.get('listname')
+            title: record.getListName(),
+            store: record.todoItems()
 //            record: record
         });
 

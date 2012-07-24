@@ -2,19 +2,19 @@ Ext.define('Todo.store.TodoListStore', {
     extend: 'Ext.data.Store',
 
     requires: [
-        'Todo.model.TodoListModel'
+        'Todo.model.TodoListModel',
+        'Todo.proxy.TodoItemProxy'
     ],
 
     config: {
 
         model: 'Todo.model.TodoListModel',
 
-        data: [
-            {name: 'My Lifetime Todos'},
-            {name: 'My Business Todos'}
-        ],
+        proxy: Ext.create('Todo.proxy.TodoListProxy'),
 
-        sorters: 'listname',
+        sorters: 'name',
+
+        autoLoad: true,
 
         grouper: {
             groupFn: function (record) {

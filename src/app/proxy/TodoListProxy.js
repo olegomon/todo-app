@@ -1,4 +1,4 @@
-Ext.define('Todo.store.TodoListProxy', {
+Ext.define('Todo.proxy.TodoListProxy', {
     extend: 'Ext.data.proxy.Rest',
 
 //    mixins: [
