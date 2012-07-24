@@ -1,13 +1,14 @@
-Ext.define('Todo.model.TodoGroupModel', {
+Ext.define('Todo.model.TodoListModel', {
     extend: 'Ext.data.Model',
     config: {
+
         fields: [
-            {name: 'groupname', type: 'string'}
+            {name: 'name', type: 'string'}
         ],
 
         validations: [
             // TODO provide some validation messages
-            {field: 'groupname', type: 'presence'}
+            {field: 'name', type: 'presence'}
         ],
 
         associations: [
@@ -15,7 +16,7 @@ Ext.define('Todo.model.TodoGroupModel', {
         ]
     },
 
-    getGroupName: function() {
-        return this.get('groupname');
+    getListName: function() {
+        return this.get('name');
     }
 });

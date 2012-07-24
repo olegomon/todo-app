@@ -1,4 +1,4 @@
-Ext.define('Todo.view.TodoGroupForm', {
+Ext.define('Todo.view.TodoListForm', {
     extend: 'Ext.form.Panel',
 
     xtype: 'todogroupform',
@@ -21,7 +21,7 @@ Ext.define('Todo.view.TodoGroupForm', {
                 items: [
                     {
                         xtype         : 'textfield',
-                        name          : 'groupname',
+                        name          : 'name',
                         required      : true,
                         label         : 'Name'
                     }

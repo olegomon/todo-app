@@ -2,7 +2,7 @@ Ext.define('Todo.config.Properties', {
 
     alternateClassName: ['Services', 'Properties'],
 
-    singleton: true,
+//    singleton: true,
 
     properties: {
 
@@ -12,9 +12,10 @@ Ext.define('Todo.config.Properties', {
         host: 'http://todows.woodly.c9.io',
 
         /**
-         * ToDo service endpoint
+         * ToDoApp service endpoint
          */
-        todos: '/api/todos'
+        todogroups: '/api/todogroups',
+        todoitems: '/api/todoitems'
     },
 
     constructor: function (config) {
@@ -34,8 +35,13 @@ Ext.define('Todo.config.Properties', {
         return this.getProperties().host;
     },
 
-    getTodosUrl: function () {
+    getTodoGroupsUrl: function () {
         var properties = this.getProperties();
-        return properties.passwords;
+        return properties.host + properties.todogroups;
+    },
+
+    getTodoItemsUrl: function () {
+        var properties = this.getProperties();
+        return properties.host + properties.todoitems;
     }
 });

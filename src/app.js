@@ -21,10 +21,10 @@ Ext.application({
     ],
 
     models: [
-        'TodoGroupModel',
+        'TodoListModel',
         'TodoItemModel'
     ],
-    stores: ['TodoGroupStore', 'TodoItemStore'],
+    stores: ['TodoListStore', 'TodoItemStore'],
     controllers: ['TodoNavigationController'],
     views: ['TodoNavigation'],
 

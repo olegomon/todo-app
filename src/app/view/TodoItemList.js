@@ -1,17 +1,20 @@
-Ext.define('Todo.view.TodoList', {
+Ext.define('Todo.view.TodoItemList', {
     extend: 'Ext.List',
-    xtype : 'todolist',
+    xtype : 'todoitemlist',
 
     requires: [
         'Todo.store.TodoListStore'
     ],
 
     config: {
-        title: 'My Todo Lists',
-        store: 'TodoListStore',
+        title: 'My Todo Items',
+        store: 'TodoItemStore',
+
         groupDir  : 'DESC',
         grouped: true,
+
         itemTpl: '{name}',
-        emptyText: 'No ToDo Lists found.'
+
+        emptyText: 'No Todo Items found.'
     }
 });

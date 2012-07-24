@@ -1,24 +1,24 @@
-Ext.define('Todo.store.TodoGroupStore', {
+Ext.define('Todo.store.TodoListStore', {
     extend: 'Ext.data.Store',
 
     requires: [
-        'Todo.model.TodoGroupModel'
+        'Todo.model.TodoListModel'
     ],
 
     config: {
 
-        model: 'Todo.model.TodoGroupModel',
+        model: 'Todo.model.TodoListModel',
 
         data: [
-            {groupname: 'My Lifetime Todos'},
-            {groupname: 'My Business Todos'}
+            {name: 'My Lifetime Todos'},
+            {name: 'My Business Todos'}
         ],
 
         sorters: 'listname',
 
         grouper: {
             groupFn: function (record) {
-                var title = record.get('groupname');
+                var title = record.get('name');
                 return title ? title[0].toUpperCase() : '';
             }
         }

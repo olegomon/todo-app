@@ -111,7 +111,7 @@ Ext.define('Todo.controller.TodoNavigationBarController', {
     onActiveItemChange: function(navigationview, value, oldValue, eOpts) {
         var activeItem = value;
 
-        if(activeItem.isXType(Todo.view.TodoGroupList.xtype)) {
+        if(activeItem.isXType(Todo.view.TodoList.xtype)) {
 
             this.getCreateTodoListButton().show();
             this.getDeleteTodoListButton().show();
@@ -124,7 +124,7 @@ Ext.define('Todo.controller.TodoNavigationBarController', {
 
         }
 
-        if(activeItem.isXType(Todo.view.TodoGroupForm.xtype)) {
+        if(activeItem.isXType(Todo.view.TodoListForm.xtype)) {
 
             this.getCreateTodoListButton().hide();
             this.getDeleteTodoListButton().hide();
@@ -137,7 +137,7 @@ Ext.define('Todo.controller.TodoNavigationBarController', {
 
         }
 
-        if(activeItem.isXType(Todo.view.TodoList.xtype)) {
+        if(activeItem.isXType(Todo.view.TodoItemList.xtype)) {
 
             this.getCreateTodoListButton().hide();
             this.getDeleteTodoListButton().hide();

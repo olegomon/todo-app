@@ -6,10 +6,10 @@ Ext.define('Todo.view.TodoNavigation', {
         'Ext.Button',
 
         'Todo.controller.TodoNavigationBarController',
-        'Todo.view.TodoGroupList',
         'Todo.view.TodoList',
+        'Todo.view.TodoItemList',
         'Todo.view.TodoItemDetailView',
-        'Todo.view.TodoGroupForm',
+        'Todo.view.TodoListForm',
         'Todo.view.TodoItemForm'
     ],
 
@@ -82,7 +82,7 @@ Ext.define('Todo.view.TodoNavigation', {
 
         items: [
             {
-                xtype: 'todogrouplist'
+                xtype: 'todolist'
             }
         ]
     },

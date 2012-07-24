@@ -9,6 +9,10 @@ Ext.define('Todo.config.AppContext', {
         'Deft.promise.Deferred',
         'Deft.promise.Promise',
 
+        'Todo.store.TodoItemProxy',
+        'Todo.store.TodoListProxy',
+
+        'Todo.config.Properties',
         'Todo.event.EventBus',
         'Todo.util.UserNotifier'
     ],
@@ -16,11 +20,22 @@ Ext.define('Todo.config.AppContext', {
     configure: function () {
         Deft.Injector.configure({
 
-            eventBus: {
-                className: 'Todo.event.EventBus'
+            eventBus    : {
+                fn: function() {
+                    if(config.mode === 'development'){
+                        console.log('injecting mock');
+                        return Ext.create('Todo.event.EventBus');
+                    } else {
+                        console.log('injecting service');
+                    }
+                }
             },
             userNotifier: {
                 className: 'Todo.util.UserNotifier'
+            },
+            // service URLs
+            properties  : {
+
             }
         });
     }

@@ -15,8 +15,8 @@ Ext.define('Todo.controller.TodoNavigationController', {
 
         refs: {
             todoNavigation: 'todonavigation',
-            todoGroupList : 'todogrouplist',
-            todoList      : 'todolist'
+            todoGroupList : 'todolist',
+            todoList      : 'todoitemlist'
         },
 
         control: {
@@ -111,7 +111,7 @@ Ext.define('Todo.controller.TodoNavigationController', {
     onGroupListItemTap: function (list, index, target, record, e, eOpts) {
         var navigation = this.getTodoNavigation();
         navigation.push({
-            xtype: 'todolist',
+            xtype: 'todoitemlist',
             title: record.get('listname')
 //            record: record
         });
