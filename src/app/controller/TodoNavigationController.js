@@ -15,8 +15,8 @@ Ext.define('Todo.controller.TodoNavigationController', {
 
         refs: {
             todoNavigation: 'todonavigation',
-            todoList : 'todolist',
-            todoItemList      : 'todoitemlist'
+            todoList: 'todolist',
+            todoItemList: 'todoitemlist'
         },
 
         control: {
@@ -55,7 +55,7 @@ Ext.define('Todo.controller.TodoNavigationController', {
     onTodoListCreateEvent: function () {
         var navigation = this.getTodoNavigation();
         navigation.push({
-            xtype: 'todogroupform',
+            xtype: 'todolistform',
             title: 'New ToDo List'
         });
     },

@@ -1,7 +1,7 @@
 Ext.define('Todo.view.TodoListForm', {
     extend: 'Ext.form.Panel',
 
-    xtype: 'todogroupform',
+    xtype: 'todolistform',
 
     requires: [
         'Ext.form.FieldSet',

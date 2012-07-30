@@ -46,27 +46,30 @@ Ext.define('Todo.view.TodoNavigation', {
                 {
                     text  : 'Delete',
                     action: 'deletetodolist',
+                    hidden: true,
 //                    iconCls : 'add',
 //                    iconMask: true,
                 },
                 {
                     text  : 'New',
                     action: 'createtodoitem',
-                    hidden: true
+                    hidden: true,
 //                    iconCls : 'compose',
 //                    iconMask: true,
                 },
                 {
                     text  : 'Edit',
                     action: 'edittodoitem',
-                    hidden: true
+                    hidden: true,
+//                    hidden: true
 //                    iconCls : 'compose',
 //                    iconMask: true,
                 },
                 {
                     text  : 'Save',
                     action: 'savetodoitem',
-                    hidden: true
+                    hidden: true,
+//                    hidden: true
 //                    iconCls : 'check2',
 //                    iconMask: true,
                 },

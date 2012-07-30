@@ -85,11 +85,11 @@ Ext.define('Todo.controller.TodoNavigationBarController', {
     },
 
     onSaveTodoListButtonTap: function() {
-        Ext.Msg.alert('Info', 'Not Implemented');
+        this.getEventBus().fireEvent(Todo.EventType.SAVE_TODO_LIST);
     },
 
     onDeleteTodoListButtonTap: function() {
-        Ext.Msg.alert('Info', 'Not Implemented');
+        this.getEventBus().fireEvent(Todo.EventType.DELETE_TODO_LIST);
     },
 
     onEditTodoItemButtonTap: function() {
@@ -114,7 +114,7 @@ Ext.define('Todo.controller.TodoNavigationBarController', {
         if(activeItem.isXType(Todo.view.TodoList.xtype)) {
 
             this.getCreateTodoListButton().show();
-            this.getDeleteTodoListButton().show();
+            this.getDeleteTodoListButton().hide();
             this.getSaveTodoListButton().hide();
 
             this.getCreateTodoItemButton().hide();
@@ -140,7 +140,7 @@ Ext.define('Todo.controller.TodoNavigationBarController', {
         if(activeItem.isXType(Todo.view.TodoItemList.xtype)) {
 
             this.getCreateTodoListButton().hide();
-            this.getDeleteTodoListButton().hide();
+            this.getDeleteTodoListButton().show();
             this.getSaveTodoListButton().hide();
 
             this.getCreateTodoItemButton().show();
