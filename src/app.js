@@ -25,7 +25,7 @@ Ext.application({
         'TodoItemModel'
     ],
     stores: ['TodoListStore', 'TodoItemStore'],
-    controllers: ['TodoNavigationController'],
+    controllers: ['TodoNavigationController', 'TodoItemController'],
     views: ['TodoNavigation'],
 
     icon: {

@@ -93,19 +93,19 @@ Ext.define('Todo.controller.TodoNavigationBarController', {
     },
 
     onEditTodoItemButtonTap: function() {
-        this.getEventBus().fireEvent(Todo.EventType.SHOW_EDIT_TODO);
+        this.getEventBus().fireEvent(Todo.EventType.SHOW_EDIT_TODO_ITEM);
     },
 
     onCreateTodoItemButtonTap: function() {
-        this.getEventBus().fireEvent(Todo.EventType.SHOW_CREATE_TODO);
+        this.getEventBus().fireEvent(Todo.EventType.SHOW_CREATE_TODO_ITEM);
     },
 
     onSaveTodoItemButtonTap: function() {
-        Ext.Msg.alert('Info', 'Not Implemented');
+        this.getEventBus().fireEvent(Todo.EventType.SAVE_TODO_ITEM);
     },
 
     onDeleteTodoItemButtonTap: function() {
-        Ext.Msg.alert('Info', 'Not Implemented');
+        this.getEventBus().fireEvent(Todo.EventType.DELETE_TODO_ITEM);
     },
 
     onActiveItemChange: function(navigationview, value, oldValue, eOpts) {

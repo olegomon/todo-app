@@ -10,8 +10,6 @@ Ext.define('Todo.store.TodoListStore', {
 
         model: 'Todo.model.TodoListModel',
 
-        proxy: Ext.create('Todo.proxy.TodoListProxy'),
-
         sorters: 'name',
 
         autoLoad: true,

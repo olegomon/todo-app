@@ -12,7 +12,7 @@ Ext.define('Todo.view.TodoItemDetailView', {
         scrollable: true,
         tpl  : [
             '<div style="padding: 1em">',
-                // '<div><span style="font-weight: bold">Name:</span> {name}</div>',
+                '<div><span style="font-weight: bold">Name:</span> {name}</div>',
                 '<div><span style="font-weight: bold">Status:</span> {status}</div>',
                 '<div><span style="font-weight: bold">Priority:</span> {priority}</div>',
                 '<div><span style="font-weight: bold">Due Date:</span> {[values.duedate ? Ext.Date.format(values.duedate, "F j, Y, g:i a") : ""]}</div>',

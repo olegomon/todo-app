@@ -14,6 +14,9 @@ Ext.define('Todo.proxy.TodoItemProxy', {
         type: 'rest',
         reader: {
             type: 'json'
+//            rootProperty: 'data',
+//            countProperty: 'count',
+//            successProperty: 'success'
         }
     },
 

@@ -71,8 +71,8 @@ Ext.define('Todo.view.TodoItemForm', {
                         xtype         : 'datepickerfield',
                         name          : 'duedate',
                         label         : 'Due Date',
-                        destroyPickerOnHide: true
-//                        value: new Date()
+                        destroyPickerOnHide: true,
+                        value: new Date()
                     },
                     {
                         xtype: 'textareafield',

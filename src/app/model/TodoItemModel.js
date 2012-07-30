@@ -4,6 +4,7 @@ Ext.define('Todo.model.TodoItemModel', {
         idProperty: '_id',
         fields: [
             {name: '_id', type: 'auto'},
+            {name: 'todoListId', type: 'auto'},
             {name: 'name', type: 'string'},
             {name: 'status', type: 'string'},
             {name: 'priority', type: 'int'},
@@ -19,8 +20,15 @@ Ext.define('Todo.model.TodoItemModel', {
         ],
 
         associations: [
-            { type: 'belongsTo', model: 'Todo.model.TodoListModel' }
-        ]
+            {
+                type: 'belongsTo',
+                model: 'Todo.model.TodoListModel',
+                primaryKey: '_id',
+                foreignKey: 'todoListId'
+            }
+        ],
+
+        proxy: Ext.create('Todo.proxy.TodoItemProxy')
     },
 
     getName: function() {

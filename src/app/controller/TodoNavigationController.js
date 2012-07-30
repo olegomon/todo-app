@@ -15,8 +15,8 @@ Ext.define('Todo.controller.TodoNavigationController', {
 
         refs: {
             todoNavigation: 'todonavigation',
-            todoGroupList : 'todolist',
-            todoList      : 'todoitemlist'
+            todoList : 'todolist',
+            todoItemList      : 'todoitemlist'
         },
 
         control: {
@@ -25,11 +25,11 @@ Ext.define('Todo.controller.TodoNavigationController', {
                 activate: 'onTodoNavigationActivate'
             },
 
-            todoGroupList: {
+            todoList: {
                 itemtap: 'onTodoListItemTap'
             },
 
-            todoList: {
+            todoItemList: {
                 itemtap: 'onTodoItemTap'
             }
         }
@@ -44,8 +44,8 @@ Ext.define('Todo.controller.TodoNavigationController', {
         // register event listeners
         var eventBus = this.getEventBus();
         eventBus.addListener(Todo.EventType.SHOW_CREATE_TODO_LIST, this.onTodoListCreateEvent, this);
-        eventBus.addListener(Todo.EventType.SHOW_CREATE_TODO, this.onTodoCreateEvent, this);
-        eventBus.addListener(Todo.EventType.SHOW_EDIT_TODO, this.onTodoEditEvent, this);
+        eventBus.addListener(Todo.EventType.SHOW_CREATE_TODO_ITEM, this.onTodoCreateEvent, this);
+        eventBus.addListener(Todo.EventType.SHOW_EDIT_TODO_ITEM, this.onTodoEditEvent, this);
     },
 
     onTodoNavigationActivate: function (list, eOpts) {
@@ -61,10 +61,12 @@ Ext.define('Todo.controller.TodoNavigationController', {
     },
 
     onTodoCreateEvent: function () {
+        var listRecord = this.getTodoItemList().listRecord;
         var navigation = this.getTodoNavigation();
         navigation.push({
             xtype: 'todoitemform',
-            title: 'New ToDo'
+            title: 'New ToDo',
+            todoListId: listRecord.getId()
         });
     },
 
@@ -99,7 +101,6 @@ Ext.define('Todo.controller.TodoNavigationController', {
         var navigation = this.getTodoNavigation();
         navigation.push({
             xtype : 'todoitemdetail',
-            title : record.get('name'),
             record: record
         });
 
@@ -112,9 +113,8 @@ Ext.define('Todo.controller.TodoNavigationController', {
         var navigation = this.getTodoNavigation();
         navigation.push({
             xtype: 'todoitemlist',
-            title: record.getListName(),
-            store: record.todoItems()
-//            record: record
+            store: record.todoItems(),
+            listRecord: record
         });
 
         Ext.defer(function () {

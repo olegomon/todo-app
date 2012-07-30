@@ -15,6 +15,9 @@ Ext.define('Todo.proxy.TodoListProxy', {
         type: 'rest',
         reader: {
             type: 'json'
+//            rootProperty: 'data',
+//            countProperty: 'count',
+//            successProperty: 'success'
         }
     },
 
