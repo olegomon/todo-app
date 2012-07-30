@@ -1,27 +1,27 @@
 Ext.define('Todo.proxy.TodoListProxy', {
     extend: 'Ext.data.proxy.Rest',
 
-//    mixins: [
-//        'Deft.mixin.Injectable'
-//    ],
+    mixins: [
+        'Deft.mixin.Injectable'
+    ],
 
-//    inject: {
-//        serviceProperties: 'properties'
-//    },
+    inject: {
+        serviceProperties: 'properties'
+    },
 
 
     config: {
-        url: 'http://localhost:3000/api/todolists',
+        serviceProperties: null,
         type: 'rest',
         reader: {
             type: 'json'
         }
-    }
+    },
 
-//    constructor: function(config) {
-//        this.initConfig(config);
-//        this.setUrl(this.getServiceProperties().getTodoItemsUrl());
-//        this.callParent(arguments);
-//        return this;
-//    }
+    constructor: function(config) {
+        this.initConfig(config);
+        this.setUrl(this.getServiceProperties().getTodoListsUrl());
+        this.callParent(arguments);
+        return this;
+    }
 });

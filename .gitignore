@@ -3,4 +3,5 @@
 *.iws
 node_modules/
 .sass-cache
-src/sdk.idea
+src/sdk
+.idea

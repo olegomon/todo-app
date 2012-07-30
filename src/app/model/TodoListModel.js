@@ -1,9 +1,9 @@
 Ext.define('Todo.model.TodoListModel', {
     extend: 'Ext.data.Model',
     config: {
-
-        fields: [
-            {id: '_id', type: 'string'},
+        idProperty: '_id',
+        fields    : [
+            {name: '_id', type: 'string'},
             {name: 'name', type: 'string'}
         ],
 
@@ -17,7 +17,11 @@ Ext.define('Todo.model.TodoListModel', {
         ]
     },
 
-    getListName: function() {
+    getListName: function () {
         return this.get('name');
+    },
+
+    getId: function () {
+        return this.get('_id');
     }
 });

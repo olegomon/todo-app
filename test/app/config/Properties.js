@@ -1,16 +1,19 @@
-Ext.define('Todo.config.Properties', {
+Ext.define('Testing.config.Properties', {
 
     alternateClassName: ['Services', 'Properties'],
-
-//    singleton: true,
 
     properties: {
 
         /**
+         * Server URL
+         */
+        host: '',
+
+        /**
          * ToDoApp service endpoint
          */
-        todolists: '/api/todolists',
-        todoitems: '/api/todoitems'
+        todolists: 'api/todolists',
+        todoitems: 'api/todoitems'
     },
 
     constructor: function (config) {
@@ -27,19 +30,16 @@ Ext.define('Todo.config.Properties', {
     },
 
     getHost: function () {
-        var host = config[config.mode].host;
-        return host;
+        return this.getProperties().host;
     },
 
     getTodoListsUrl: function () {
         var properties = this.getProperties();
-        var host = this.getHost();
-        return host + properties.todolists;
+        return properties.host + properties.todolists;
     },
 
     getTodoItemsUrl: function () {
         var properties = this.getProperties();
-        var host = this.getHost();
-        return host + properties.todoitems;
+        return properties.host + properties.todoitems;
     }
 });

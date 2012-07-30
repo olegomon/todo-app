@@ -3,7 +3,7 @@ Ext.define('Todo.view.TodoItemList', {
     xtype : 'todoitemlist',
 
     requires: [
-        'Todo.store.TodoListStore'
+        'Todo.store.TodoItemStore'
     ],
 
     config: {

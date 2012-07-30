@@ -1,21 +1,41 @@
 var assert = buster.assertions.assert;
 var refute = buster.assertions.refute;
 
-buster.testCase("TodoGroupModel", {
+buster.assertions.add("instanceOf", {
+    assert: function (actual, className) {
+        return Ext.getClassName(actual) === className;
+    },
+    assertMessage: "Expected ${0} to be instance of ${1}",
+    refuteMessage: "Expected ${0} not to be instance of ${1}", // Optional
+    expectation: "toBeInstanceOf" // Optional
+});
 
-    "should have a name setter": function () {
-        var model = Ext.create('Todo.model.TodoListModel', {name: 'some name'});
-        assert.equals(model.getListName(), 'some name');
+buster.testCase("TodoListStore", {
+
+    "setUp" : function(done) {
+        this.store = Ext.create('Todo.store.TodoListStore');
+        this.store.load(function(records, operation, success) {
+            done();
+        });
     },
 
-    "should have a todoItems getter": function () {
-        var model = Ext.create('Todo.model.TodoListModel', {name: 'some name'});
-        assert(Ext.isFunction(model.todoItems), 'association method must be a function');
+    "should be auto load enabled": function () {
+        assert(this.store.getAutoLoad());
     },
 
-    "should have a todoItems added": function () {
-        var todoGroup = Ext.create('Todo.model.TodoListModel', {name: 'some name'});
-        todoGroup.todoItems().add({name: 'my todo', status: 'Done'});
-        assert.equals(todoGroup.todoItems().getCount(), 1);
+    "should have three todo lists": function () {
+        assert.equals(this.store.getCount(), 3);
+    },
+
+    "list model should have associated data": function() {
+        var todolist = this.store.getAt(0);
+        assert.equals(todolist.getId(), 1);
+        console.log(Ext.getClassName(todolist));
+
+        assert.instanceOf(todolist, 'Todo.model.TodoListModel');
+        assert.isFunction(todolist.todoItems);
+
+        assert.instanceOf(todolist.todoItems(), 'Ext.data.Store');
+
     }
 });

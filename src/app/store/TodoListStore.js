@@ -3,7 +3,7 @@ Ext.define('Todo.store.TodoListStore', {
 
     requires: [
         'Todo.model.TodoListModel',
-        'Todo.proxy.TodoItemProxy'
+        'Todo.proxy.TodoListProxy'
     ],
 
     config: {

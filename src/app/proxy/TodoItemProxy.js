@@ -19,7 +19,7 @@ Ext.define('Todo.proxy.TodoItemProxy', {
 
     constructor: function(config) {
         this.initConfig(config);
-        this.setUrl(this.getServiceProperties().getTodoGroupsUrl());
+        this.setUrl(this.getServiceProperties().getTodoItemsUrl());
         this.callParent(arguments);
         return this;
     }

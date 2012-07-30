@@ -4,13 +4,13 @@ describe("deferred", function(){
     var cancelCallback, deferred, failureCallback, progressCallback, successCallback;
     deferred = null;
     successCallback = failureCallback = progressCallback = cancelCallback = null;
-
     beforeEach(function() {
         deferred = Ext.create('Deft.promise.Deferred');
-        successCallback = this.spy('success callback');
-        failureCallback = this.spy('failure callback');
-        progressCallback = this.spy('progress callback');
-        cancelCallback = this.spy('cancel callback');
+
+        successCallback = sinon.spy();
+        failureCallback = sinon.spy();
+        progressCallback = sinon.spy();
+        cancelCallback = sinon.spy();
     });
 
     it('should REJECT subsequent promises if the initial deferred has been rejected', function() {

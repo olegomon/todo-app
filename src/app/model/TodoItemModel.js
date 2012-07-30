@@ -1,7 +1,9 @@
 Ext.define('Todo.model.TodoItemModel', {
     extend: 'Ext.data.Model',
     config: {
+        idProperty: '_id',
         fields: [
+            {name: '_id', type: 'auto'},
             {name: 'name', type: 'string'},
             {name: 'status', type: 'string'},
             {name: 'priority', type: 'int'},

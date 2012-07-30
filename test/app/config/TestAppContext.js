@@ -8,7 +8,7 @@ Ext.define('Testing.config.TestAppContext', {
         'Deft.ioc.Injector',
         'Deft.promise.Deferred',
         'Deft.promise.Promise',
-
+        'Testing.config.Properties',
         'Todo.event.EventBus',
         'Todo.util.UserNotifier'
     ],
@@ -21,6 +21,10 @@ Ext.define('Testing.config.TestAppContext', {
             },
             userNotifier: {
                 className: 'Todo.util.UserNotifier'
+            },
+            // service URLs
+            properties  : {
+                className: 'Testing.config.Properties'
             }
         });
     }

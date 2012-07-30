@@ -21,13 +21,8 @@ Ext.define('Todo.config.AppContext', {
         Deft.Injector.configure({
 
             eventBus    : {
-                fn: function() {
-                    if(config.mode === 'development'){
-                        console.log('injecting mock');
-                        return Ext.create('Todo.event.EventBus');
-                    } else {
-                        console.log('injecting service');
-                    }
+                fn: function () {
+                    return Ext.create('Todo.event.EventBus');
                 }
             },
             userNotifier: {
@@ -35,7 +30,7 @@ Ext.define('Todo.config.AppContext', {
             },
             // service URLs
             properties  : {
-
+                className: 'Todo.config.Properties'
             }
         });
     }

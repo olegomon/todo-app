@@ -11,7 +11,7 @@ Ext.define('Todo.store.TodoItemStore', {
 
         emptyText: 'No items.',
 
-        sorters: 'listname',
+        sorters: 'name',
 
         grouper: {
             groupFn: function (record) {
