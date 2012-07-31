@@ -9,7 +9,7 @@ Ext.define('Todo.model.TodoItemModel', {
             {name: 'status', type: 'string'},
             {name: 'priority', type: 'int'},
             {name: 'description', type: 'string'},
-            {name: 'duedate', type: 'date', dateFormat: 'c'}
+            {name: 'duedate', type: 'date', dateFormat: 'c', defaultValue: 0}
         ],
 
         validations: [

@@ -35,7 +35,8 @@ Ext.define('Todo.controller.TodoListController', {
     },
 
     onTodoListSaveEvent:function () {
-        var todoItemRecord = this.getTodoListForm().getRecord();
+        var me = this;
+        var todoItemRecord = me.getTodoListForm().getRecord();
         if (todoItemRecord) {
             Ext.Msg.alert('Info', 'Not Implemented');
         } else {
@@ -49,7 +50,9 @@ Ext.define('Todo.controller.TodoListController', {
             newRecord.save({
                 success:function () {
                     store.add(newRecord);
-                    Ext.Msg.alert("Save", "Successfully saved list.");
+                    Ext.Msg.alert("Save", "Successfully saved list.", function() {
+                        me.getEventBus().fireEvent(Todo.EventType.TODO_LIST_SAVED);
+                    });
                 },
                 failure:function () {
                     Ext.Msg.alert("Save", "Failed to save list.");
@@ -59,10 +62,13 @@ Ext.define('Todo.controller.TodoListController', {
     },
 
     onTodoListDeleteEvent:function () {
-        var todoListRecord = this.getTodoItemList().listRecord;
+        var me = this;
+        var todoListRecord = me.getTodoItemList().listRecord;
         todoListRecord.erase({
             success:function () {
-                Ext.Msg.alert("Delete", "Successfully deleted list.");
+                Ext.Msg.alert("Delete", "Successfully deleted list.", function() {
+                    me.getEventBus().fireEvent(Todo.EventType.TODO_LIST_DELETED);
+                });
             },
             failure:function () {
                 Ext.Msg.alert("Delete", "Failed to delete list.");

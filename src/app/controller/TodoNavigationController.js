@@ -46,10 +46,33 @@ Ext.define('Todo.controller.TodoNavigationController', {
         eventBus.addListener(Todo.EventType.SHOW_CREATE_TODO_LIST, this.onTodoListCreateEvent, this);
         eventBus.addListener(Todo.EventType.SHOW_CREATE_TODO_ITEM, this.onTodoCreateEvent, this);
         eventBus.addListener(Todo.EventType.SHOW_EDIT_TODO_ITEM, this.onTodoEditEvent, this);
+
+        eventBus.addListener(Todo.EventType.TODO_LIST_SAVED, this.onTodoListSavedEvent, this);
+        eventBus.addListener(Todo.EventType.TODO_LIST_DELETED, this.onTodoListDeletedEvent, this);
+
+        eventBus.addListener(Todo.EventType.TODO_ITEM_SAVED, this.onTodoItemSavedEvent, this);
+        eventBus.addListener(Todo.EventType.TODO_ITEM_DELETED, this.onTodoItemDeleted, this);
+
     },
 
     onTodoNavigationActivate: function (list, eOpts) {
         // TODO load todo lists
+    },
+
+    onTodoItemSavedEvent: function() {
+        this.popNavigationView();
+    },
+
+    onTodoItemDeleted: function() {
+        this.popNavigationView();
+    },
+
+    onTodoListSavedEvent: function() {
+        this.popNavigationView();
+    },
+
+    onTodoListDeletedEvent: function() {
+        this.popNavigationView();
     },
 
     onTodoListCreateEvent: function () {
@@ -68,23 +91,6 @@ Ext.define('Todo.controller.TodoNavigationController', {
             title: 'New ToDo',
             todoListId: listRecord.getId()
         });
-    },
-
-    onTodoCreatedEvent: function () {
-        this.popNavigationView();
-    },
-
-    onTodoSavedEvent: function (todo) {
-        this.popNavigationView();
-    },
-
-    onShowListEvent: function () {
-        var navigation = this.getTodoNavigation();
-        navigation.pop(navigation.getCount());
-    },
-
-    onTodoDeletedEvent: function () {
-        this.popNavigationView(2);
     },
 
     onTodoEditEvent: function () {
@@ -121,11 +127,6 @@ Ext.define('Todo.controller.TodoNavigationController', {
             list.deselect(index);
         }, 300);
     },
-
-//    onTodoCreateEvent: function (button, event, eOpts) {
-//        var navigation = this.getTodoNavigation();
-//        navigation.push({ xtype: 'todocreateform' });
-//    },
 
     popNavigationView: function (count) {
         var navigation = this.getTodoNavigation();

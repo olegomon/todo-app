@@ -35,6 +35,7 @@ Ext.define('Todo.controller.TodoItemController', {
     },
 
     onTodoListDeleteEvent:function () {
+        var me = this;
         var todoItemRecord = this.getTodoItemForm().getRecord();
         if (todoItemRecord) {
             // update record
@@ -42,7 +43,19 @@ Ext.define('Todo.controller.TodoItemController', {
             // undocumented API - alternatively update individual fields manually
             // do not use setData() since non-provided values will be nullified
             this.getTodoItemForm().updateRecord(todoItemRecord);
-            todoItemRecord.save();
+
+            todoItemRecord.save({
+                success: function() {
+                    Ext.Msg.alert("Save", "Successfully saved item.", function() {
+                        me.getEventBus().fireEvent(Todo.EventType.TODO_ITEM_SAVED);
+                    });
+                },
+                failure: function() {
+                    // TODO indicate error
+                    Ext.Msg.alert("Save", "Failed to save item.");
+                }
+            });
+
         } else {
             // create new record
             var values = this.getTodoItemForm().getValues();
@@ -57,19 +70,26 @@ Ext.define('Todo.controller.TodoItemController', {
             newRecord.save({
                 success:function () {
                     listRecord.todoItems().add(newRecord);
+                    Ext.Msg.alert("Save", "Successfully saved item.", function() {
+                        me.getEventBus().fireEvent(Todo.EventType.TODO_ITEM_SAVED);
+                    });
                 },
                 failure:function () {
                     // TODO indicate error
+                    Ext.Msg.alert("Save", "Failed to save item.");
                 }
             });
         }
     },
 
     onTodoItemDeleteEvent:function () {
+        var me = this;
         var todoItemRecord = this.getTodoItemDetail().getRecord();
         todoItemRecord.erase({
             success:function () {
-                // TODO hide item view / fire event
+                Ext.Msg.alert("Delete", "Successfully deleted item.", function() {
+                    me.getEventBus().fireEvent(Todo.EventType.TODO_ITEM_DELETED);
+                });
             },
             failure:function () {
                 // TODO indicate error
