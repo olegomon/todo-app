@@ -1,17 +1,17 @@
 Ext.define('Todo.controller.TodoItemController', {
     extend:'Ext.app.Controller',
 
-    mixins:[
-        'Deft.mixin.Injectable'
-    ],
+//    mixins:[
+//        'Deft.mixin.Injectable'
+//    ],
 
-    inject:{
-        eventBus:'eventBus'
-    },
+//    inject:{
+//        eventBus:'eventBus'
+//    },
 
     config:{
         // this property stub is made for injection
-        eventBus:null,
+//        eventBus:null,
 
         refs:{
             todoItemForm:'todoitemform',
@@ -30,8 +30,12 @@ Ext.define('Todo.controller.TodoItemController', {
     init:function () {
         // register event listeners
         var eventBus = this.getEventBus();
-        eventBus.addListener(Todo.EventType.SAVE_TODO_ITEM, this.onTodoListDeleteEvent, this);
-        eventBus.addListener(Todo.EventType.DELETE_TODO_ITEM, this.onTodoItemDeleteEvent, this);
+        eventBus.addListener(Todo.Event.SAVE_TODO_ITEM, this.onTodoListDeleteEvent, this);
+        eventBus.addListener(Todo.Event.DELETE_TODO_ITEM, this.onTodoItemDeleteEvent, this);
+    },
+
+    getEventBus: function() {
+        return Todo.app;
     },
 
     onTodoListDeleteEvent:function () {
@@ -47,7 +51,7 @@ Ext.define('Todo.controller.TodoItemController', {
             todoItemRecord.save({
                 success: function() {
                     Ext.Msg.alert("Save", "Successfully saved item.", function() {
-                        me.getEventBus().fireEvent(Todo.EventType.TODO_ITEM_SAVED);
+                        me.getEventBus().fireEvent(Todo.Event.TODO_ITEM_SAVED);
                     });
                 },
                 failure: function() {
@@ -71,11 +75,10 @@ Ext.define('Todo.controller.TodoItemController', {
                 success:function () {
                     listRecord.todoItems().add(newRecord);
                     Ext.Msg.alert("Save", "Successfully saved item.", function() {
-                        me.getEventBus().fireEvent(Todo.EventType.TODO_ITEM_SAVED);
+                        me.getEventBus().fireEvent(Todo.Event.TODO_ITEM_SAVED);
                     });
                 },
                 failure:function () {
-                    // TODO indicate error
                     Ext.Msg.alert("Save", "Failed to save item.");
                 }
             });
@@ -85,17 +88,20 @@ Ext.define('Todo.controller.TodoItemController', {
     onTodoItemDeleteEvent:function () {
         var me = this;
         var todoItemRecord = this.getTodoItemDetail().getRecord();
-        todoItemRecord.erase({
-            success:function () {
-                Ext.Msg.alert("Delete", "Successfully deleted item.", function() {
-                    me.getEventBus().fireEvent(Todo.EventType.TODO_ITEM_DELETED);
+        Ext.Msg.confirm('Delete Item?', 'Do you really want to delete?', function(buttonId, value, opt) {
+            if(buttonId === 'yes') {
+                todoItemRecord.erase({
+                    success:function () {
+                        Ext.Msg.alert("Delete", "Successfully deleted item.", function() {
+                            me.getEventBus().fireEvent(Todo.Event.TODO_ITEM_DELETED);
+                        });
+                    },
+                    failure:function () {
+                        // TODO indicate error
+                        Ext.Msg.alert("Delete", "Failed to delete item.");
+                    }
                 });
-            },
-            failure:function () {
-                // TODO indicate error
-                Ext.Msg.alert("Delete", "Failed to delete item.");
             }
         });
     }
-
 });

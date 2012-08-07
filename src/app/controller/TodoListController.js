@@ -1,17 +1,17 @@
 Ext.define('Todo.controller.TodoListController', {
     extend:'Ext.app.Controller',
 
-    mixins:[
-        'Deft.mixin.Injectable'
-    ],
+//    mixins:[
+//        'Deft.mixin.Injectable'
+//    ],
 
-    inject:{
-        eventBus:'eventBus'
-    },
+//    inject:{
+//        eventBus:'eventBus'
+//    },
 
     config:{
         // this property stub is made for injection
-        eventBus:null,
+//        eventBus:null,
 
         refs:{
             todoListForm:'todolistform',
@@ -27,11 +27,15 @@ Ext.define('Todo.controller.TodoListController', {
         return this;
     },
 
-    init:function () {
+    init: function () {
         // register event listeners
         var eventBus = this.getEventBus();
-        eventBus.addListener(Todo.EventType.SAVE_TODO_LIST, this.onTodoListSaveEvent, this);
-        eventBus.addListener(Todo.EventType.DELETE_TODO_LIST, this.onTodoListDeleteEvent, this);
+        eventBus.addListener(Todo.Event.SAVE_TODO_LIST, this.onTodoListSaveEvent, this);
+        eventBus.addListener(Todo.Event.DELETE_TODO_LIST, this.onTodoListDeleteEvent, this);
+    },
+
+    getEventBus: function() {
+        return Todo.app;
     },
 
     onTodoListSaveEvent:function () {
@@ -42,22 +46,33 @@ Ext.define('Todo.controller.TodoListController', {
         } else {
             // create new record
             var values = this.getTodoListForm().getValues();
-            var newRecord = Ext.create('Todo.model.TodoListModel', values);
+            var todoList = Ext.create('Todo.model.TodoListModel', values);
 
-            // add record manually to store
-            var store = Ext.getStore('TodoListStore');
+            // TODO apply validation API
+            var errors = todoList.validate();
+            if(errors.isValid()) {
+                // add record manually to store
+                var store = Ext.getStore('TodoListStore');
 
-            newRecord.save({
-                success:function () {
-                    store.add(newRecord);
-                    Ext.Msg.alert("Save", "Successfully saved list.", function() {
-                        me.getEventBus().fireEvent(Todo.EventType.TODO_LIST_SAVED);
-                    });
-                },
-                failure:function () {
-                    Ext.Msg.alert("Save", "Failed to save list.");
-                }
-            });
+                todoList.save({
+                    success:function () {
+                        store.add(todoList);
+                        Ext.Msg.alert("Save", "Successfully saved list.", function() {
+                            me.getEventBus().fireEvent(Todo.Event.TODO_LIST_SAVED);
+                        });
+                    },
+                    failure:function () {
+                        Ext.Msg.alert("Save", "Failed to save list.");
+                    }
+                });
+            } else {
+                var message = "";
+                errors.each(function (error) {
+                    message = message + '<p>' + error.getMessage() + '<p/>'
+                });
+                Ext.Msg.alert("Validation", message);
+            }
+
         }
     },
 
@@ -67,7 +82,7 @@ Ext.define('Todo.controller.TodoListController', {
         todoListRecord.erase({
             success:function () {
                 Ext.Msg.alert("Delete", "Successfully deleted list.", function() {
-                    me.getEventBus().fireEvent(Todo.EventType.TODO_LIST_DELETED);
+                    me.getEventBus().fireEvent(Todo.Event.TODO_LIST_DELETED);
                 });
             },
             failure:function () {

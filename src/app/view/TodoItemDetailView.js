@@ -8,15 +8,29 @@ Ext.define('Todo.view.TodoItemDetailView', {
     ],
 
     config: {
-        title: 'Todo Detail',
+        title     : 'Todo Detail',
         scrollable: true,
-        tpl  : [
-            '<div style="padding: 1em">',
-                '<div><span style="font-weight: bold">Name:</span> {name}</div>',
-                '<div><span style="font-weight: bold">Status:</span> {status}</div>',
-                '<div><span style="font-weight: bold">Priority:</span> {priority}</div>',
-                '<div><span style="font-weight: bold">Due Date:</span> {[values.duedate ? Ext.Date.format(values.duedate, "F j, Y, g:i a") : ""]}</div>',
-                '<div><span style="font-weight: bold">Description:</span> {description}</div>',
+        cls       : 'todo-detail-panel',
+        tpl       : [
+            '<div class="todo-item">',
+                '<div class="item-title">{name}</div>',
+                '<div><span class="item-label">Status:</span><span class="item-value">{status}</span></div>',
+
+                '<div class="item-priority">',
+                    '<div class="item-label">Priority:</div>',
+                    '<tpl if="priority == 1">',
+                        '<div class="priority-low"/>',
+                    '</tpl>',
+                    '<tpl if="priority == 2">',
+                        '<div class="priority-medium"/>',
+                    '</tpl>',
+                    '<tpl if="priority == 3">',
+                        '<div class="priority-high"/>',
+                    '</tpl>',
+                '</div>',
+            '</div>',
+                '<div><span class="item-label">Due:</span><span class="item-value">{[values.duedate ? Ext.Date.format(values.duedate, "F j, Y, g:i a") : ""]}</span></div>',
+                '<div><span class="item-label">Note:</span><span class="item-value">{description}</span></div>',
             '</div>'
         ]
     }

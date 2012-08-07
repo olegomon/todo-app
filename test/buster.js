@@ -41,3 +41,4 @@ config["Browser"] = {
         "test/app/**/*-test.js"
     ]
 };
+

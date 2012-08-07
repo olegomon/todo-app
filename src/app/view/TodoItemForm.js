@@ -12,67 +12,64 @@ Ext.define('Todo.view.TodoItemForm', {
     ],
 
     config: {
-        title: 'New ToDo',
+        title   : 'New ToDo',
         defaults: {
             labelWidth: '35%'
         },
-        items : [
+        items   : [
             {
-                xtype: 'fieldset',
-                title: 'ToDo Item Values',
+                xtype       : 'fieldset',
+                title       : 'ToDo Item Values',
                 instructions: 'Fill out the ToDo values.',
-                items: [
+                items       : [
                     {
-                        xtype         : 'textfield',
-                        name          : 'name',
-                        required      : true,
-                        label         : 'Name'
+                        xtype   : 'textfield',
+                        name    : 'name',
+                        required: true,
+                        label   : 'Name'
                     },
                     {
-                        xtype         : 'selectfield',
-                        name          : 'status',
-                        label         : 'Status',
+                        xtype  : 'selectfield',
+                        name   : 'status',
+                        label  : 'Status',
+                        value  : 'open',
                         options: [
                             {
-                                text: 'Open',
-//                                value: 0
+                                text : 'Open',
+                                value: 'open'
                             },
                             {
-                                text: 'Done',
-                                value: 1
+                                text : 'Done',
+                                value: 'done'
                             }
                         ]
                     },
                     {
-                        xtype         : 'selectfield',
-                        name          : 'priority',
-                        label         : 'Priority',
-
+                        xtype  : 'selectfield',
+                        name   : 'priority',
+                        label  : 'Priority',
+                        value  : 2,
                         options: [
                             {
-                                text: 'None',
-//                                value: 0
-                            },
-                            {
-                                text: 'Low',
+                                text : 'Low',
                                 value: 1
                             },
                             {
-                                text: 'Medium',
+                                text : 'Medium',
                                 value: 2
                             },
                             {
-                                text: 'High',
+                                text : 'High',
                                 value: 3
                             }
                         ]
                     },
                     {
-                        xtype         : 'datepickerfield',
-                        name          : 'duedate',
-                        label         : 'Due Date',
+                        xtype              : 'datepickerfield',
+                        name               : 'duedate',
+                        label              : 'Due Date',
                         destroyPickerOnHide: true,
-                        value: new Date()
+                        value              : new Date()
                     },
                     {
                         xtype: 'textareafield',

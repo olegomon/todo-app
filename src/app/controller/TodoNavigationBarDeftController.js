@@ -1,109 +1,117 @@
 Ext.define('Todo.controller.TodoNavigationBarController', {
-    extend: 'Ext.app.Controller',
+    extend: 'Deft.mvc.ViewController',
 
     requires: [
         'Ext.MessageBox'
     ],
 
-//    mixins: [
-//        'Deft.mixin.Injectable'
-//    ],
+    mixins: [
+        'Deft.mixin.Injectable'
+    ],
 
-//    inject: {
-//        eventBus    : 'eventBus',
-//    },
+    inject: {
+        eventBus             : 'eventBus',
+        userNotifier         : 'userNotifier'
+    },
 
     config: {
-        eventBus    : null,
-        userNotifier: null,
+        eventBus             : null,
+        userNotifier         : null
+    },
 
-        refs: {
-            todoNavigation: 'todonavigation',
+    control: {
 
-            createTodoListButton: 'todonavigation button[action=createtodolist]',
-            saveTodoListButton  : 'todonavigation button[action=savetodolist]',
-            deleteTodoListButton: 'todonavigation button[action=deletetodolist]',
-            createTodoItemButton: 'todonavigation button[action=createtodoitem]',
-            editTodoItemButton  : 'todonavigation button[action=edittodoitem]',
-            saveTodoItemButton  : 'todonavigation button[action=savetodoitem]',
-            deleteTodoItemButton: 'todonavigation button[action=deletetodoitem]'
+        view: {
         },
 
-        control: {
-            createTodoListButton: {
+        createTodoListButton: {
+            selector : 'button[action=createtodolist]',
+            listeners: {
                 tap: 'onCreateTodoListButtonTap'
-            },
+            }
+        },
 
-            saveTodoListButton: {
+        saveTodoListButton: {
+            selector : 'button[action=savetodolist]',
+            listeners: {
                 tap: 'onSaveTodoListButtonTap'
-            },
+            }
+        },
 
-            deleteTodoListButton: {
+        deleteTodoListButton: {
+            selector : 'button[action=deletetodolist]',
+            listeners: {
                 tap: 'onDeleteTodoListButtonTap'
-            },
+            }
+        },
 
-            createTodoItemButton: {
+        createTodoItemButton: {
+            selector : 'button[action=createtodoitem]',
+            listeners: {
                 tap: 'onCreateTodoItemButtonTap'
-            },
+            }
+        },
 
-            editTodoItemButton: {
+        editTodoItemButton: {
+            selector : 'button[action=edittodoitem]',
+            listeners: {
                 tap: 'onEditTodoItemButtonTap'
-            },
+            }
+        },
 
-            saveTodoItemButton: {
+        saveTodoItemButton: {
+            selector : 'button[action=savetodoitem]',
+            listeners: {
                 tap: 'onSaveTodoItemButtonTap'
-            },
+            }
+        },
 
-            deleteTodoItemButton: {
+        deleteTodoItemButton: {
+            selector : 'button[action=deletetodoitem]',
+            listeners: {
                 tap: 'onDeleteTodoItemButtonTap'
             }
         }
     },
 
-    launch: function () {
-
+    init: function() {
         // change the buttons before the animation starts
-        this.getTodoNavigation().on('activeitemchange', this.onActiveItemChange, this, null, 'before');
+        this.getView().on('activeitemchange', this.onActiveItemChange, this, null, 'before');
         return this.callParent(arguments);
     },
 
-    getEventBus: function() {
-        return Todo.app;
-    },
-
-    onCreateTodoListButtonTap: function () {
-        console.log(this.getTodoNavigation());
+    onCreateTodoListButtonTap: function() {
         this.getEventBus().fireEvent(Todo.Event.SHOW_CREATE_TODO_LIST);
     },
 
-    onSaveTodoListButtonTap: function () {
+    onSaveTodoListButtonTap: function() {
         this.getEventBus().fireEvent(Todo.Event.SAVE_TODO_LIST);
     },
 
-    onDeleteTodoListButtonTap: function () {
+    onDeleteTodoListButtonTap: function() {
         this.getEventBus().fireEvent(Todo.Event.DELETE_TODO_LIST);
     },
 
-    onEditTodoItemButtonTap: function () {
+    onEditTodoItemButtonTap: function() {
         this.getEventBus().fireEvent(Todo.Event.SHOW_EDIT_TODO_ITEM);
     },
 
-    onCreateTodoItemButtonTap: function () {
+    onCreateTodoItemButtonTap: function() {
         this.getEventBus().fireEvent(Todo.Event.SHOW_CREATE_TODO_ITEM);
     },
 
-    onSaveTodoItemButtonTap: function () {
+    onSaveTodoItemButtonTap: function() {
         this.getEventBus().fireEvent(Todo.Event.SAVE_TODO_ITEM);
     },
 
-    onDeleteTodoItemButtonTap: function () {
+    onDeleteTodoItemButtonTap: function() {
         this.getEventBus().fireEvent(Todo.Event.DELETE_TODO_ITEM);
     },
 
-    onActiveItemChange: function (navigationview, value, oldValue, eOpts) {
+    onActiveItemChange: function(navigationview, value, oldValue, eOpts) {
         var activeItem = value;
 
-        if (activeItem.isXType(Todo.view.TodoList.xtype)) {
+        if(activeItem.isXType(Todo.view.TodoList.xtype)) {
 
             this.getCreateTodoListButton().show();
             this.getDeleteTodoListButton().hide();
@@ -116,7 +124,7 @@ Ext.define('Todo.controller.TodoNavigationBarController', {
 
         }
 
-        if (activeItem.isXType(Todo.view.TodoListForm.xtype)) {
+        if(activeItem.isXType(Todo.view.TodoListForm.xtype)) {
 
             this.getCreateTodoListButton().hide();
             this.getDeleteTodoListButton().hide();
@@ -129,7 +137,7 @@ Ext.define('Todo.controller.TodoNavigationBarController', {
 
         }
 
-        if (activeItem.isXType(Todo.view.TodoItemList.xtype)) {
+        if(activeItem.isXType(Todo.view.TodoItemList.xtype)) {
 
             this.getCreateTodoListButton().hide();
             this.getDeleteTodoListButton().show();
@@ -141,7 +149,7 @@ Ext.define('Todo.controller.TodoNavigationBarController', {
             this.getSaveTodoItemButton().hide();
         }
 
-        if (activeItem.isXType(Todo.view.TodoItemDetailView.xtype)) {
+        if(activeItem.isXType(Todo.view.TodoItemDetailView.xtype)) {
             this.getCreateTodoListButton().hide();
             this.getDeleteTodoListButton().hide();
             this.getSaveTodoListButton().hide();
@@ -152,7 +160,7 @@ Ext.define('Todo.controller.TodoNavigationBarController', {
             this.getSaveTodoItemButton().hide();
         }
 
-        if (activeItem.isXType(Todo.view.TodoItemForm.xtype)) {
+        if(activeItem.isXType(Todo.view.TodoItemForm.xtype)) {
             this.getCreateTodoListButton().hide();
             this.getDeleteTodoListButton().hide();
             this.getSaveTodoListButton().hide();

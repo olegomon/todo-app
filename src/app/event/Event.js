@@ -1,6 +1,6 @@
-Ext.define('Todo.event.EventType', {
+Ext.define('Todo.event.Event', {
 
-    alternateClassName:'Todo.EventType',
+    alternateClassName:'Todo.Event',
 
     statics:{
         SHOW_CREATE_TODO_LIST:'SHOW_CREATE_TODO_LIST',

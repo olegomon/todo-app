@@ -28,14 +28,13 @@ buster.testCase("TodoListStore", {
     },
 
     "list model should have associated data": function() {
-        var todolist = this.store.getAt(0);
-        assert.equals(todolist.getId(), 1);
-        console.log(Ext.getClassName(todolist));
+        var todoList = this.store.getAt(0);
+        assert.equals(todoList.getId(), 1);
+        console.log(Ext.getClassName(todoList));
 
-        assert.instanceOf(todolist, 'Todo.model.TodoListModel');
-        assert.isFunction(todolist.todoItems);
+        assert.instanceOf(todoList, 'Todo.model.TodoListModel');
+        assert.isFunction(todoList.todoItems);
 
-        assert.instanceOf(todolist.todoItems(), 'Ext.data.Store');
-
+        assert.instanceOf(todoList.todoItems(), 'Ext.data.Store');
     }
 });

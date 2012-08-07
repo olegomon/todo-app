@@ -27,6 +27,7 @@ Ext.application({
     stores: ['TodoListStore', 'TodoItemStore'],
     controllers: [
         'TodoNavigationController',
+        'TodoNavigationBarController',
         'TodoItemController',
         'TodoListController'
     ],

@@ -1,0 +1,79 @@
+.todo-detail-panel {
+  //margin: 1.5em;
+  padding: 1em;
+  font-family: "Marker Felt";
+  .todo-item {
+
+    //margin: 1em;
+    padding: 1em;
+
+    border-radius: .3em;
+    //background-color: #ffee78;
+    background-color: #dcdcdc;
+
+    .item-title {
+      font-size: 120%;
+      padding-bottom: .4em;
+    }
+
+    .item-label {
+      color: lighten(#000000, 50%);
+      margin-right: .3em;
+    }
+
+    .item-priority {
+
+      @include display-box;
+      @include box-orient(horizontal);
+
+      .priority-low {
+        //margin-left: .3em;
+        padding: .1em;
+        border-radius: .5em;
+        width: 1em;
+        height: 1em;
+        background-color: green;
+      }
+      .priority-medium {
+        //margin-left: .3em;
+        border-radius: .5em;
+        width: 1em;
+        height: 1em;
+        background-color: orange;
+      }
+      .priority-high {
+        //margin-left: .3em;
+        //-webkit-animation-name: greenPulse;
+        //-webkit-animation-duration: 2s;
+        //-webkit-animation-iteration-count: infinite;
+        border-radius: .5em;
+        width: 1em;
+        height: 1em;
+        background-color: red;
+      }
+    }
+
+    .item-value {
+      color: lighten(#000000, 10%);
+    }
+
+    & > div {
+      padding: .2em 0em;
+    }
+  }
+}
+
+@-webkit-keyframes greenPulse {
+  from {
+    background-color: #981111;
+    -webkit-box-shadow: 0 0 9px #333;
+  }
+  50% {
+    background-color: #FF8000;
+    -webkit-box-shadow: 0 0 18px #981111;
+  }
+  to {
+    background-color: #981111;
+    -webkit-box-shadow: 0 0 9px #333;
+  }
+}

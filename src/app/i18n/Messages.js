@@ -49,7 +49,7 @@ Ext.define('Todo.i18n.Messages', {
     translate: function (key) {
         if(key) {
             var message = this.getBundle().getMsg(key);
-            return message ? message : key;
+            return message ? message : '!' + key + '!';
         }
         return null;
     },

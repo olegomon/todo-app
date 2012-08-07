@@ -19,7 +19,7 @@ buster.testCase("Messages", {
 
     "test messages returns the key itself if the translation was not found" : function() {
         var messages = Messages;
-        assert.equals(messages.translate('invalid'), 'invalid');
+        assert.equals(messages.translate('invalid'), '!invalid!');
     },
 
     "test messages returns null if the key is not truthy" : function() {

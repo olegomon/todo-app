@@ -9,7 +9,7 @@ Ext.define('Todo.model.TodoListModel', {
 
         validations:[
             // TODO provide some validation messages
-            {field:'name', type:'presence'}
+            { field:'name', type:'presence', message: 'The ToDo list must have a name' }
         ],
 
         associations:[
@@ -28,6 +28,10 @@ Ext.define('Todo.model.TodoListModel', {
 
     getListName:function () {
         return this.get('name');
+    },
+
+    setListName:function (name) {
+        this.set('name', name);
     },
 
     getId:function () {
