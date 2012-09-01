@@ -1,37 +1,22 @@
 Ext.Loader.setConfig({
-    paths         : {
-        'Todo': 'app',
-        'Deft'   : 'lib/DeftJS/src/js/Deft'
+    paths: {
+        'Todo': 'app'
     }
 });
 
 Ext.syncRequire(['Todo.i18n.Messages']);
 
-Ext.require(['Todo.config.AppContext'],
-    function () {
-        Todo.AppContext.configure();
-    }
-);
-
 Ext.application({
     name: 'Todo',
 
-    requires: [
-        'Ext.MessageBox'
+    controllers: [
+        'TodoItemController'
     ],
 
-    models: [
-        'TodoListModel',
-        'TodoItemModel'
+    views: [
+        'TodoItemListView',
+        'TodoItemDetailView'
     ],
-    stores: ['TodoListStore', 'TodoItemStore'],
-    controllers: [
-        'TodoNavigationController',
-        'TodoNavigationBarController',
-        'TodoItemController',
-        'TodoListController'
-    ],
-    views: ['TodoNavigation'],
 
     icon: {
         '57': 'resources/icons/Icon.png',
@@ -56,19 +41,7 @@ Ext.application({
         Ext.fly('appLoadingIndicator').destroy();
 
         // Initialize the main view
-        Ext.Viewport.add(Ext.create('Todo.view.TodoNavigation'));
-//        Ext.Viewport.add(Ext.create('Todo.view.TodoItemForm'));
-    },
-
-    onUpdated: function() {
-        Ext.Msg.confirm(
-            "Application Update",
-            "This application has just successfully been updated to the latest version. Reload now?",
-            function(buttonId) {
-                if (buttonId === 'yes') {
-                    window.location.reload();
-                }
-            }
-        );
+        Ext.Viewport.add(Ext.create('Todo.view.TodoItemListView'));
     }
+
 });

@@ -1,18 +1,1 @@
- {
-    "config" : {
-
-        "mode" : "development",
-
-        "production": {
-            "host" : "http://todows.woodly.c9.io"
-        },
-
-        "development": {
-            "host" : "http://localhost:3000"
-        },
-
-        "testing": {
-            "host" : "http://localhost:3000"
-        }
-    }
-}
+// empty
