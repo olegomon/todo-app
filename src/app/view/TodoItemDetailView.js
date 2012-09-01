@@ -1,5 +1,5 @@
 Ext.define('Todo.view.TodoItemDetailView', {
-    extend: 'Ext.Container',
+    extend: 'Ext.Panel',
 
     xtype: 'todoitemdetail',
 
@@ -12,25 +12,32 @@ Ext.define('Todo.view.TodoItemDetailView', {
         scrollable: true,
         cls       : 'todo-detail-panel',
         tpl       : [
-            '<div class="todo-item">',
-                '<div class="item-title">{name}</div>',
-                '<div><span class="item-label">Status:</span><span class="item-value">{status}</span></div>',
-
-                '<div class="item-priority">',
+            '<div class="todo-item-container">',
+                '<div class="item-value-title">{name}</div>',
+                '<div class="item-field">',
+                    '<div class="item-label">Status:</div>',
+                    '<div class="item-value">{[values.status === "done" ? "Done" : "Open"]}</div>',
+                '</div>',
+                '<div class="item-value-priority">',
                     '<div class="item-label">Priority:</div>',
                     '<tpl if="priority == 1">',
-                        '<div class="priority-low"/>',
+                        '<div class="priority-low"></div>',
                     '</tpl>',
                     '<tpl if="priority == 2">',
-                        '<div class="priority-medium"/>',
+                        '<div class="priority-medium"></div>',
                     '</tpl>',
                     '<tpl if="priority == 3">',
-                        '<div class="priority-high"/>',
+                        '<div class="priority-high"></div>',
                     '</tpl>',
                 '</div>',
-            '</div>',
-                '<div><span class="item-label">Due:</span><span class="item-value">{[values.duedate ? Ext.Date.format(values.duedate, "F j, Y, g:i a") : ""]}</span></div>',
-                '<div><span class="item-label">Note:</span><span class="item-value">{description}</span></div>',
+                '<div class="item-field">',
+                    '<div class="item-label">Due:</div>',
+                    '<div class="item-value">{[values.duedate ? Ext.Date.format(values.duedate, "F j, Y, g:i a") : ""]}</div>',
+                '</div>',
+                '<div class="item-field">',
+                    '<div class="item-label">Note:</div>',
+                    '<div class="item-value-description">{description}</div>',
+                '</div>',
             '</div>'
         ]
     }

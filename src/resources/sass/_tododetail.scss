@@ -1,51 +1,55 @@
-.todo-detail-panel {
-  //margin: 1.5em;
-  padding: 1em;
-  font-family: "Marker Felt";
-  .todo-item {
+$item-background-color: #dcdcdc;
 
-    //margin: 1em;
+
+.todo-detail-panel {
+
+  height: 100%;
+
+  .todo-item-container {
+
     padding: 1em;
+    margin: 1em;
+    height: 100%;
 
     border-radius: .3em;
-    //background-color: #ffee78;
-    background-color: #dcdcdc;
 
-    .item-title {
-      font-size: 120%;
+    background-color: $item-background-color;
+
+    .item-field {
+      padding-top: .4em;
+      padding-bottom: .4em;
+    }
+
+    .item-value-title {
+      font-family: "Marker Felt" "helvetica neue" "Arial";
+      font-size: 160%;
       padding-bottom: .4em;
     }
 
     .item-label {
       color: lighten(#000000, 50%);
       margin-right: .3em;
+      font-size: 80%;
     }
 
-    .item-priority {
+    .item-value-priority {
 
       @include display-box;
       @include box-orient(horizontal);
 
       .priority-low {
-        //margin-left: .3em;
-        padding: .1em;
         border-radius: .5em;
         width: 1em;
         height: 1em;
         background-color: green;
       }
       .priority-medium {
-        //margin-left: .3em;
         border-radius: .5em;
         width: 1em;
         height: 1em;
         background-color: orange;
       }
       .priority-high {
-        //margin-left: .3em;
-        //-webkit-animation-name: greenPulse;
-        //-webkit-animation-duration: 2s;
-        //-webkit-animation-iteration-count: infinite;
         border-radius: .5em;
         width: 1em;
         height: 1em;
@@ -53,6 +57,15 @@
       }
     }
 
+    .item-value-description {
+      font-family: "Marker Felt" "helvetica neue" "Arial";
+      border-radius: .2em;
+      padding: .2em;
+      border: solid 1px lighten($base-color, 30%);
+      background-color: lighten($item-background-color, 10%);
+      min-height: 5em;
+      height: 100%;
+    }
     .item-value {
       color: lighten(#000000, 10%);
     }
