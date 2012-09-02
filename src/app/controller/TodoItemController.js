@@ -3,14 +3,11 @@ Ext.define('Todo.controller.TodoItemController', {
 
     config:{
         refs:{
-            todoMainView:'todomain',
-            todoItemList:'todoitemlist'
+            // TODO add references to main and item list view using their xtypes
         },
 
         control:{
-            todoItemList: {
-                itemtap: 'onTodoListItemTap'
-            }
+            // TODO for the item list view listen to 'itemtap' events and delegate them to onTodoListItemTap
         }
     },
 
@@ -23,15 +20,9 @@ Ext.define('Todo.controller.TodoItemController', {
     },
 
     onTodoListItemTap: function (list, index, target, record, e, eOpts) {
-        var detailView = Ext.create('Todo.view.TodoItemDetailView');
-        detailView.setRecord(record);
-        detailView.setTitle(record.get('name'));
-
-        this.getTodoMainView().push(detailView);
-
-        Ext.defer(function () {
-            list.deselect(index);
-        }, 100);
+        // TODO create instance of TodoItemDetailView (Ext.create ...)
+        // TODO set title and record on detail view (detailView.set...)
+        // TODO push view onto main view (this.getTodoMainView()...)
     }
 
 });

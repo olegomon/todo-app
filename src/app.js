@@ -42,7 +42,11 @@ Ext.application({
         Ext.fly('appLoadingIndicator').destroy();
 
         // Initialize the main view
-        Ext.Viewport.add(Ext.create('Todo.view.TodoMainView'));
+        Ext.Viewport.add(
+            {
+                html: 'TODO Replace me with an instance of TodoMainView (app.js)'
+            }
+        ); // TODO use Ext.create(...)
     }
 
 });

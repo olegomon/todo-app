@@ -3,15 +3,13 @@ Ext.define('Todo.view.TodoMainView', {
     xtype : 'todomain',
 
     requires: [
-        'Todo.view.TodoItemListView',
-        'Todo.view.TodoItemDetailView'
+        // TODO add required view references
     ],
 
     config: {
         items: [
             {
-                title: 'Todo',
-                xtype: 'todoitemlist'
+                html: 'TODO Replace me with TodoItemListView and set a proper title' // TODO use title and xtype
             }
         ]
     }
