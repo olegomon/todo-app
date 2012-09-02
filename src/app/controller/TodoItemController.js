@@ -17,6 +17,10 @@ Ext.define('Todo.controller.TodoItemController', {
     },
 
     init:function () {
+    },
+
+    onItemTap: function() {
+        console.log("tapped");
     }
 
 });
