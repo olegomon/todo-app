@@ -41,7 +41,7 @@ Ext.application({
         Ext.fly('appLoadingIndicator').destroy();
 
         // Initialize the main view
-        Ext.Viewport.add(Ext.create('Todo.view.MainView'));
+        Ext.Viewport.add(Ext.create('Todo.view.TodoItemListView'));
     }
 
 });

@@ -4,10 +4,17 @@ Ext.define('Todo.controller.TodoItemController', {
     config:{
         refs:{
             todoItemList:'todoitemlist',
-            todoItemDetail:'todoitemdetail'
+            todoItemDetail:'todoitemdetail',
+            detailCloseButton:'todoitemdetail button'
         },
 
         control:{
+            todoItemList: {
+                itemtap: 'onTodoListItemTap'
+            },
+            detailCloseButton: {
+                tap: 'onDetailClose'
+            }
         }
     },
 
@@ -19,8 +26,25 @@ Ext.define('Todo.controller.TodoItemController', {
     init:function () {
     },
 
-    onItemTap: function() {
-        console.log("tapped");
+    onTodoListItemTap: function (list, index, target, record, e, eOpts) {
+        var detailView = Ext.create('Todo.view.TodoItemDetailView');
+        detailView.setRecord(record);
+
+        Ext.Viewport.animateActiveItem(
+                detailView,
+                { type: 'slide', direction: 'left' }
+        );
+
+        Ext.defer(function () {
+            list.deselect(index);
+        }, 100);
+    },
+
+    onDetailClose: function() {
+        Ext.Viewport.animateActiveItem(
+                Ext.create('Todo.view.TodoItemListView'),
+                { type: 'slide', direction: 'right' }
+        );
     }
 
 });
