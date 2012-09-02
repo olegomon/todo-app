@@ -3,6 +3,7 @@ Ext.define('Todo.controller.TodoItemController', {
 
     config:{
         refs:{
+            todoMainView:'todomain',
             todoItemList:'todoitemlist',
             todoItemDetail:'todoitemdetail',
             detailCloseButton:'todoitemdetail button'
@@ -30,10 +31,11 @@ Ext.define('Todo.controller.TodoItemController', {
         var detailView = Ext.create('Todo.view.TodoItemDetailView');
         detailView.setRecord(record);
 
-        Ext.Viewport.animateActiveItem(
-                detailView,
-                { type: 'slide', direction: 'left' }
-        );
+        getTodoMainView().push(detailView);
+//        Ext.Viewport.animateActiveItem(
+//                detailView,
+//                { type: 'slide', direction: 'left' }
+//        );
 
         Ext.defer(function () {
             list.deselect(index);
@@ -41,10 +43,11 @@ Ext.define('Todo.controller.TodoItemController', {
     },
 
     onDetailClose: function() {
-        Ext.Viewport.animateActiveItem(
-                Ext.create('Todo.view.TodoItemListView'),
-                { type: 'slide', direction: 'right' }
-        );
+        getTodoMainView().pop();
+//        Ext.Viewport.animateActiveItem(
+//                Ext.create('Todo.view.TodoItemListView'),
+//                { type: 'slide', direction: 'right' }
+//        );
     }
 
 });
