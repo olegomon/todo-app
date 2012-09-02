@@ -35,21 +35,8 @@ Ext.define('Todo.view.TodoItemDetailView', {
                     '<div class="item-value-description">{description}</div>',
                 '</div>',
             '</div>'
-        ],
-
-        items: [
-            {
-                xtype: 'container',
-                docked: 'bottom',
-                padding: 20,
-                items: [
-                    {
-                        xtype: 'button',
-                        text: 'Close',
-                    }
-                ]
-            }
         ]
+
     }
 
 });
