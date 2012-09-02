@@ -21,15 +21,13 @@ Ext.application({
     ],
 
     models: [
-        'TodoListModel',
         'TodoItemModel'
     ],
-    stores: ['TodoListStore', 'TodoItemStore'],
+    stores: ['TodoItemStore'],
     controllers: [
         'TodoNavigationController',
         'TodoNavigationBarController',
-        'TodoItemController',
-        'TodoListController'
+        'TodoItemController'
     ],
     views: ['TodoNavigation'],
 
@@ -57,7 +55,6 @@ Ext.application({
 
         // Initialize the main view
         Ext.Viewport.add(Ext.create('Todo.view.TodoNavigation'));
-//        Ext.Viewport.add(Ext.create('Todo.view.TodoItemForm'));
     },
 
     onUpdated: function() {

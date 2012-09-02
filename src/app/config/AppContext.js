@@ -10,7 +10,6 @@ Ext.define('Todo.config.AppContext', {
         'Deft.promise.Promise',
 
         'Todo.proxy.TodoItemProxy',
-        'Todo.proxy.TodoListProxy',
 
         'Todo.config.Properties',
         'Todo.event.EventBus',

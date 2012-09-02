@@ -9,8 +9,7 @@ Ext.define('Todo.config.Properties', {
         /**
          * ToDoApp service endpoint
          */
-        todolists: '/api/todolists',
-        todoitems: '/api/todoitems'
+        todoitems: '/api/todos'
     },
 
     constructor: function (config) {
@@ -29,12 +28,6 @@ Ext.define('Todo.config.Properties', {
     getHost: function () {
         var host = config[config.mode].host;
         return host;
-    },
-
-    getTodoListsUrl: function () {
-        var properties = this.getProperties();
-        var host = this.getHost();
-        return host + properties.todolists;
     },
 
     getTodoItemsUrl: function () {

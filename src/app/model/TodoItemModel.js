@@ -4,7 +4,6 @@ Ext.define('Todo.model.TodoItemModel', {
         idProperty: '_id',
         fields: [
             {name: '_id', type: 'auto'},
-            {name: 'todoListId', type: 'auto'},
             {name: 'name', type: 'string'},
             {name: 'status', type: 'string'},
             {name: 'priority', type: 'int'},
@@ -17,15 +16,6 @@ Ext.define('Todo.model.TodoItemModel', {
             {type: 'presence', field: 'name'},
             {type: 'length', field: 'name', min: 2},
             {type: 'inclusion', field: 'status', list: ['Done', 'Open']}
-        ],
-
-        associations: [
-            {
-                type: 'belongsTo',
-                model: 'Todo.model.TodoListModel',
-                primaryKey: '_id',
-                foreignKey: 'todoListId'
-            }
         ],
 
         proxy: Ext.create('Todo.proxy.TodoItemProxy')
