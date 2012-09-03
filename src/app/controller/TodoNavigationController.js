@@ -80,8 +80,8 @@ Ext.define('Todo.controller.TodoNavigationController', {
         var navigation = this.getTodoNavigation();
         navigation.push({
             xtype: 'todoitemform',
-            title: 'New ToDo',
-            todoListId: listRecord.getId()
+            title: 'New ToDo'
+            // TODO set 'todoListId' foreign key
         });
     },
 
@@ -108,16 +108,11 @@ Ext.define('Todo.controller.TodoNavigationController', {
     },
 
     onTodoListItemTap: function (list, index, target, record, e, eOpts) {
-        var navigation = this.getTodoNavigation();
-        navigation.push({
-            xtype: 'todoitemlist',
-            store: record.todoItems(),
-            listRecord: record
-        });
-
-        Ext.defer(function () {
-            list.deselect(index);
-        }, 300);
+        // TODO create new TodoItemList view
+        // TODO push list view onto TodoNavigation view
+        // TODO get todoItems store from list record
+        // TODO set todoItems store on list view
+        // TODO store list record in 'listRecord' field on list view
     },
 
     popNavigationView: function (count) {

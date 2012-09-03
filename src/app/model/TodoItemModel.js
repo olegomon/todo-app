@@ -7,7 +7,10 @@ Ext.define('Todo.model.TodoItemModel', {
         idProperty: '_id',
         fields: [
             {name: '_id', type: 'auto'},
-            {name: 'todoListId', type: 'auto'}, // note: required
+
+                // TODO add required foreign key field
+                // see also http://woodly.de:3000/api/todoitems
+
             {name: 'name', type: 'string'},
             {name: 'status', type: 'string'},
             {name: 'priority', type: 'int'},
@@ -23,10 +26,10 @@ Ext.define('Todo.model.TodoItemModel', {
 
         associations: [
             {
-                type: 'belongsTo',
-                model: 'Todo.model.TodoListModel',
-                primaryKey: '_id',
-                foreignKey: 'todoListId'
+                type: 'belongsTo'
+
+                // TODO define belongsTo association with TodoListModel
+                // model, primaryKey, foreignKey
             }
         ],
 

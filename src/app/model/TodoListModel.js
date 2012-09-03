@@ -16,12 +16,11 @@ Ext.define('Todo.model.TodoListModel', {
 
         associations:[
             {
-                type:'hasMany',
-                model:'Todo.model.TodoItemModel',
-                name:'todoItems',
-                associationKey:'todoItems',
-                primaryKey:'_id',
-                foreignKey:'todoListId'
+                type:'hasMany'
+
+                // TODO define hasMany association with TodoItemModel
+                // model, name, associationKey, primaryKey, foreignKey
+
             }
         ],
 

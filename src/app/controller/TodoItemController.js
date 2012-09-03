@@ -50,12 +50,15 @@ Ext.define('Todo.controller.TodoItemController', {
             var newRecord = Ext.create('Todo.model.TodoItemModel', values);
 
             // add record manually to store
-            var store = Ext.getStore('TodoListStore');
-            var listRecord = store.getById(todoListId);
+
+            // TODO get TodoListStore
+            // TODO get listRecord by todoListId
+            // TODO add newRecord to listRecord.todoItems() if newRecord.save() call is successful
 
             newRecord.save({
                 success:function () {
-                    listRecord.todoItems().add(newRecord);
+
+
                     Ext.Msg.alert("Save", "Successfully saved item.", function() {
                         Todo.EventBus.fireEvent(Todo.Event.TODO_ITEM_SAVED);
                     });

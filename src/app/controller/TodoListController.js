@@ -31,7 +31,6 @@ Ext.define('Todo.controller.TodoListController', {
             var values = this.getTodoListForm().getValues();
             var todoList = Ext.create('Todo.model.TodoListModel', values);
 
-            // TODO apply validation API
             var errors = todoList.validate();
             if(errors.isValid()) {
                 // add record manually to store
@@ -60,7 +59,7 @@ Ext.define('Todo.controller.TodoListController', {
     },
 
     onTodoListDeleteEvent:function () {
-        var todoListRecord = me.getTodoItemList().listRecord;
+        var todoListRecord = null; // TODO get reference to current list record - see also TodoNavigationController
         todoListRecord.erase({
             success:function () {
                 Ext.Msg.alert("Delete", "Successfully deleted list.", function() {

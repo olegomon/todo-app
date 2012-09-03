@@ -11,15 +11,8 @@ Ext.define('Todo.store.TodoItemStore', {
 
         emptyText: 'No items.',
 
-        sorters: 'name',
+        sorters: 'name'
 
-        grouper: {
-            groupFn: function (record) {
-                return "";
-//                var name = record.get('name');
-//                return name ? name[0].toUpperCase() : '';
-            }
-        }
     }
 });
 
