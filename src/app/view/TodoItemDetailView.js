@@ -3,10 +3,6 @@ Ext.define('Todo.view.TodoItemDetailView', {
 
     xtype: 'todoitemdetail',
 
-    requires: [
-
-    ],
-
     config: {
         title     : 'Todo Detail',
         scrollable: true,

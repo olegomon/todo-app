@@ -1,18 +1,3 @@
-Ext.Loader.setConfig({
-    paths         : {
-        'Todo': 'app',
-        'Deft'   : 'lib/DeftJS/src/js/Deft'
-    }
-});
-
-Ext.syncRequire(['Todo.i18n.Messages']);
-
-Ext.require(['Todo.config.AppContext'],
-    function () {
-        Todo.AppContext.configure();
-    }
-);
-
 Ext.application({
     name: 'Todo',
 
@@ -23,12 +8,15 @@ Ext.application({
     models: [
         'TodoItemModel'
     ],
+
     stores: ['TodoItemStore'],
+
     controllers: [
         'TodoNavigationController',
         'TodoNavigationBarController',
         'TodoItemController'
     ],
+
     views: ['TodoNavigation'],
 
     icon: {

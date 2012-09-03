@@ -6,7 +6,6 @@ Ext.define('Todo.controller.TodoNavigationBarController', {
     ],
 
     config: {
-        eventBus    : null,
         userNotifier: null,
 
         refs: {
@@ -43,31 +42,26 @@ Ext.define('Todo.controller.TodoNavigationBarController', {
         return this.callParent(arguments);
     },
 
-    getEventBus: function() {
-        return Todo.app;
-    },
-
     onEditTodoItemButtonTap: function () {
-        this.getEventBus().fireEvent(Todo.Event.SHOW_EDIT_TODO_ITEM);
+        Todo.EventBus.fireEvent(Todo.Event.SHOW_EDIT_TODO_ITEM);
     },
 
     onCreateTodoItemButtonTap: function () {
-        this.getEventBus().fireEvent(Todo.Event.SHOW_CREATE_TODO_ITEM);
+        Todo.EventBus.fireEvent(Todo.Event.SHOW_CREATE_TODO_ITEM);
     },
 
     onSaveTodoItemButtonTap: function () {
-        this.getEventBus().fireEvent(Todo.Event.SAVE_TODO_ITEM);
+        Todo.EventBus.fireEvent(Todo.Event.SAVE_TODO_ITEM);
     },
 
     onDeleteTodoItemButtonTap: function () {
-        this.getEventBus().fireEvent(Todo.Event.DELETE_TODO_ITEM);
+        Todo.EventBus.fireEvent(Todo.Event.DELETE_TODO_ITEM);
     },
 
     onActiveItemChange: function (navigationview, value, oldValue, eOpts) {
         var activeItem = value;
 
         if (activeItem.isXType(Todo.view.TodoItemList.xtype)) {
-
             this.getCreateTodoItemButton().show();
             this.getEditTodoItemButton().hide();
             this.getDeleteTodoItemButton().hide();
@@ -88,4 +82,5 @@ Ext.define('Todo.controller.TodoNavigationBarController', {
             this.getSaveTodoItemButton().show();
         }
     }
+
 });

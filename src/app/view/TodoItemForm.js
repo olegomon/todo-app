@@ -8,7 +8,7 @@ Ext.define('Todo.view.TodoItemForm', {
         'Ext.field.Select',
         'Ext.field.Text',
         'Ext.field.TextArea',
-        'Ext.field.DatePicker',
+        'Ext.field.DatePicker'
     ],
 
     config: {

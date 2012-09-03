@@ -2,24 +2,15 @@ Ext.define('Todo.store.TodoItemStore', {
     extend: 'Ext.data.Store',
 
     requires: [
-        'Todo.model.TodoItemModel'
+        'Todo.model.TodoItemModel',
+        'Todo.proxy.TodoItemProxy'
     ],
 
     config: {
-
         model: 'Todo.model.TodoItemModel',
-
-        emptyText: 'No items.',
-
+        proxy: Ext.create('Todo.proxy.TodoItemProxy'),
         sorters: 'name',
-
-        grouper: {
-            groupFn: function (record) {
-                return "";
-//                var name = record.get('name');
-//                return name ? name[0].toUpperCase() : '';
-            }
-        }
+        emptyText: 'No items.'
     }
 });
 

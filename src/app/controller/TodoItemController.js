@@ -2,9 +2,6 @@ Ext.define('Todo.controller.TodoItemController', {
     extend:'Ext.app.Controller',
 
     config:{
-        // this property stub is made for injection
-//        eventBus:null,
-
         refs:{
             todoItemForm:'todoitemform',
             todoItemDetail:'todoitemdetail'
@@ -21,13 +18,8 @@ Ext.define('Todo.controller.TodoItemController', {
 
     init:function () {
         // register event listeners
-        var eventBus = this.getEventBus();
-        eventBus.addListener(Todo.Event.SAVE_TODO_ITEM, this.onTodoItemSaveEvent, this);
-        eventBus.addListener(Todo.Event.DELETE_TODO_ITEM, this.onTodoItemDeleteEvent, this);
-    },
-
-    getEventBus: function() {
-        return Todo.app;
+        Todo.EventBus.addListener(Todo.Event.SAVE_TODO_ITEM, this.onTodoItemSaveEvent, this);
+        Todo.EventBus.addListener(Todo.Event.DELETE_TODO_ITEM, this.onTodoItemDeleteEvent, this);
     },
 
     onTodoItemSaveEvent:function () {
@@ -43,11 +35,10 @@ Ext.define('Todo.controller.TodoItemController', {
             todoItemRecord.save({
                 success: function() {
                     Ext.Msg.alert("Save", "Successfully saved item.", function() {
-                        me.getEventBus().fireEvent(Todo.Event.TODO_ITEM_SAVED);
+                        Todo.EventBus.fireEvent(Todo.Event.TODO_ITEM_SAVED);
                     });
                 },
                 failure: function() {
-                    // TODO indicate error
                     Ext.Msg.alert("Save", "Failed to save item.");
                 }
             });
@@ -64,7 +55,7 @@ Ext.define('Todo.controller.TodoItemController', {
                 success:function () {
                     store.add(newRecord);
                     Ext.Msg.alert("Save", "Successfully saved item.", function() {
-                        me.getEventBus().fireEvent(Todo.Event.TODO_ITEM_SAVED);
+                        Todo.EventBus.fireEvent(Todo.Event.TODO_ITEM_SAVED);
                     });
                 },
                 failure:function () {
@@ -82,11 +73,10 @@ Ext.define('Todo.controller.TodoItemController', {
                 todoItemRecord.erase({
                     success:function () {
                         Ext.Msg.alert("Delete", "Successfully deleted item.", function() {
-                            me.getEventBus().fireEvent(Todo.Event.TODO_ITEM_DELETED);
+                            Todo.EventBus.fireEvent(Todo.Event.TODO_ITEM_DELETED);
                         });
                     },
                     failure:function () {
-                        // TODO indicate error
                         Ext.Msg.alert("Delete", "Failed to delete item.");
                     }
                 });

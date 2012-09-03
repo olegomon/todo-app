@@ -1,10 +1,12 @@
 Ext.define('Todo.controller.TodoNavigationController', {
     extend: 'Ext.app.Controller',
 
-    config: {
-        // this property stub is made for injection
-        eventBus: null,
+    requires: [
+        'Todo.event.EventBus',
+        'Todo.event.Event'
+    ],
 
+    config: {
         refs: {
             todoNavigation: 'todonavigation',
             todoList: 'todolist',
@@ -12,10 +14,6 @@ Ext.define('Todo.controller.TodoNavigationController', {
         },
 
         control: {
-
-            todoNavigation: {
-                activate: 'onTodoNavigationActivate'
-            },
 
             todoList: {
                 itemtap: 'onTodoListItemTap'
@@ -34,20 +32,11 @@ Ext.define('Todo.controller.TodoNavigationController', {
 
     init: function () {
         // register event listeners
-        var eventBus = this.getEventBus();
-        eventBus.addListener(Todo.Event.SHOW_CREATE_TODO_ITEM, this.onTodoCreateEvent, this);
-        eventBus.addListener(Todo.Event.SHOW_EDIT_TODO_ITEM, this.onTodoEditEvent, this);
+        Todo.EventBus.addListener(Todo.Event.SHOW_CREATE_TODO_ITEM, this.onTodoCreateEvent, this);
+        Todo.EventBus.addListener(Todo.Event.SHOW_EDIT_TODO_ITEM, this.onTodoEditEvent, this);
 
-        eventBus.addListener(Todo.Event.TODO_ITEM_SAVED, this.onTodoItemSavedEvent, this);
-        eventBus.addListener(Todo.Event.TODO_ITEM_DELETED, this.onTodoItemDeleted, this);
-    },
-
-    getEventBus: function() {
-        return Todo.app;
-    },
-
-    onTodoNavigationActivate: function (list, eOpts) {
-        // TODO load todo lists
+        Todo.EventBus.addListener(Todo.Event.TODO_ITEM_SAVED, this.onTodoItemSavedEvent, this);
+        Todo.EventBus.addListener(Todo.Event.TODO_ITEM_DELETED, this.onTodoItemDeleted, this);
     },
 
     onTodoItemSavedEvent: function() {
@@ -63,7 +52,7 @@ Ext.define('Todo.controller.TodoNavigationController', {
         var navigation = this.getTodoNavigation();
         navigation.push({
             xtype: 'todoitemform',
-            title: 'New ToDo',
+            title: 'New ToDo'
         });
     },
 
