@@ -1,18 +1,7 @@
 Ext.define('Todo.controller.TodoListController', {
     extend:'Ext.app.Controller',
 
-//    mixins:[
-//        'Deft.mixin.Injectable'
-//    ],
-
-//    inject:{
-//        eventBus:'eventBus'
-//    },
-
     config:{
-        // this property stub is made for injection
-//        eventBus:null,
-
         refs:{
             todoListForm:'todolistform',
             todoItemList:'todoitemlist'
@@ -29,18 +18,12 @@ Ext.define('Todo.controller.TodoListController', {
 
     init: function () {
         // register event listeners
-        var eventBus = this.getEventBus();
-        eventBus.addListener(Todo.Event.SAVE_TODO_LIST, this.onTodoListSaveEvent, this);
-        eventBus.addListener(Todo.Event.DELETE_TODO_LIST, this.onTodoListDeleteEvent, this);
-    },
-
-    getEventBus: function() {
-        return Todo.app;
+        Todo.EventBus.addListener(Todo.Event.SAVE_TODO_LIST, this.onTodoListSaveEvent, this);
+        Todo.EventBus.addListener(Todo.Event.DELETE_TODO_LIST, this.onTodoListDeleteEvent, this);
     },
 
     onTodoListSaveEvent:function () {
-        var me = this;
-        var todoItemRecord = me.getTodoListForm().getRecord();
+        var todoItemRecord = this.getTodoListForm().getRecord();
         if (todoItemRecord) {
             Ext.Msg.alert('Info', 'Not Implemented');
         } else {
@@ -58,7 +41,7 @@ Ext.define('Todo.controller.TodoListController', {
                     success:function () {
                         store.add(todoList);
                         Ext.Msg.alert("Save", "Successfully saved list.", function() {
-                            me.getEventBus().fireEvent(Todo.Event.TODO_LIST_SAVED);
+                            Todo.EventBus.fireEvent(Todo.Event.TODO_LIST_SAVED);
                         });
                     },
                     failure:function () {
@@ -77,12 +60,11 @@ Ext.define('Todo.controller.TodoListController', {
     },
 
     onTodoListDeleteEvent:function () {
-        var me = this;
         var todoListRecord = me.getTodoItemList().listRecord;
         todoListRecord.erase({
             success:function () {
                 Ext.Msg.alert("Delete", "Successfully deleted list.", function() {
-                    me.getEventBus().fireEvent(Todo.Event.TODO_LIST_DELETED);
+                    Todo.EventBus.fireEvent(Todo.Event.TODO_LIST_DELETED);
                 });
             },
             failure:function () {

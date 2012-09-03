@@ -1,23 +1,11 @@
-Ext.Loader.setConfig({
-    paths         : {
-        'Todo': 'app',
-        'Deft'   : 'lib/DeftJS/src/js/Deft'
-    }
-});
-
-Ext.syncRequire(['Todo.i18n.Messages']);
-
-Ext.require(['Todo.config.AppContext'],
-    function () {
-        Todo.AppContext.configure();
-    }
-);
-
 Ext.application({
     name: 'Todo',
 
     requires: [
-        'Ext.MessageBox'
+        'Ext.MessageBox',
+        'Todo.config.Properties',
+        'Todo.proxy.TodoListProxy',
+        'Todo.proxy.TodoItemProxy'
     ],
 
     models: [
@@ -57,7 +45,6 @@ Ext.application({
 
         // Initialize the main view
         Ext.Viewport.add(Ext.create('Todo.view.TodoNavigation'));
-//        Ext.Viewport.add(Ext.create('Todo.view.TodoItemForm'));
     },
 
     onUpdated: function() {

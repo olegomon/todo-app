@@ -1,16 +1,9 @@
 Ext.define('Todo.proxy.TodoItemProxy', {
     extend: 'Ext.data.proxy.Rest',
 
-    mixins: [
-        'Deft.mixin.Injectable'
-    ],
-
-    inject: {
-        serviceProperties: 'properties'
-    },
+    requires: [ 'Todo.config.Properties'],
 
     config: {
-        serviceProperties: null,
         type: 'rest',
         reader: {
             type: 'json'
@@ -22,7 +15,7 @@ Ext.define('Todo.proxy.TodoItemProxy', {
 
     constructor: function(config) {
         this.initConfig(config);
-        this.setUrl(this.getServiceProperties().getTodoItemsUrl());
+        this.setUrl(Properties.getTodoItemsUrl());
         this.callParent(arguments);
         return this;
     }

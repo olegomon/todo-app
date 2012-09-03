@@ -2,7 +2,7 @@ Ext.define('Todo.config.Properties', {
 
     alternateClassName: ['Services', 'Properties'],
 
-//    singleton: true,
+    singleton: true,
 
     properties: {
 

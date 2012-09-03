@@ -1,10 +1,13 @@
 Ext.define('Todo.model.TodoItemModel', {
     extend: 'Ext.data.Model',
+
+    requires: ['Todo.proxy.TodoItemProxy'],
+
     config: {
         idProperty: '_id',
         fields: [
             {name: '_id', type: 'auto'},
-            {name: 'todoListId', type: 'auto'},
+            {name: 'todoListId', type: 'auto'}, // note: required
             {name: 'name', type: 'string'},
             {name: 'status', type: 'string'},
             {name: 'priority', type: 'int'},
@@ -13,7 +16,6 @@ Ext.define('Todo.model.TodoItemModel', {
         ],
 
         validations: [
-            // TODO provide some validation messages
             {type: 'presence', field: 'name'},
             {type: 'length', field: 'name', min: 2},
             {type: 'inclusion', field: 'status', list: ['Done', 'Open']}

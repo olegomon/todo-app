@@ -1,18 +1,9 @@
 Ext.define('Todo.controller.TodoNavigationController', {
     extend: 'Ext.app.Controller',
 
-//    mixins: [
-//        'Deft.mixin.Injectable'
-//    ],
-
-//    inject: {
-//        eventBus: 'eventBus'
-//    },
+    requires: ['Todo.event.EventBus'],
 
     config: {
-        // this property stub is made for injection
-        eventBus: null,
-
         refs: {
             todoNavigation: 'todonavigation',
             todoList: 'todolist',
@@ -42,17 +33,15 @@ Ext.define('Todo.controller.TodoNavigationController', {
 
     init: function () {
         // register event listeners
-        var eventBus = this.getEventBus();
-        eventBus.addListener(Todo.Event.SHOW_CREATE_TODO_LIST, this.onTodoListCreateEvent, this);
-        eventBus.addListener(Todo.Event.SHOW_CREATE_TODO_ITEM, this.onTodoCreateEvent, this);
-        eventBus.addListener(Todo.Event.SHOW_EDIT_TODO_ITEM, this.onTodoEditEvent, this);
+        Todo.EventBus.addListener(Todo.Event.SHOW_CREATE_TODO_LIST, this.onTodoListCreateEvent, this);
+        Todo.EventBus.addListener(Todo.Event.SHOW_CREATE_TODO_ITEM, this.onTodoCreateEvent, this);
+        Todo.EventBus.addListener(Todo.Event.SHOW_EDIT_TODO_ITEM, this.onTodoEditEvent, this);
 
-        eventBus.addListener(Todo.Event.TODO_LIST_SAVED, this.onTodoListSavedEvent, this);
-        eventBus.addListener(Todo.Event.TODO_LIST_DELETED, this.onTodoListDeletedEvent, this);
+        Todo.EventBus.addListener(Todo.Event.TODO_LIST_SAVED, this.onTodoListSavedEvent, this);
+        Todo.EventBus.addListener(Todo.Event.TODO_LIST_DELETED, this.onTodoListDeletedEvent, this);
 
-        eventBus.addListener(Todo.Event.TODO_ITEM_SAVED, this.onTodoItemSavedEvent, this);
-        eventBus.addListener(Todo.Event.TODO_ITEM_DELETED, this.onTodoItemDeleted, this);
-
+        Todo.EventBus.addListener(Todo.Event.TODO_ITEM_SAVED, this.onTodoItemSavedEvent, this);
+        Todo.EventBus.addListener(Todo.Event.TODO_ITEM_DELETED, this.onTodoItemDeleted, this);
     },
 
     getEventBus: function() {
@@ -60,7 +49,6 @@ Ext.define('Todo.controller.TodoNavigationController', {
     },
 
     onTodoNavigationActivate: function (list, eOpts) {
-        // TODO load todo lists
     },
 
     onTodoItemSavedEvent: function() {

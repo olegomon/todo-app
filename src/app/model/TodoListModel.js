@@ -1,5 +1,8 @@
 Ext.define('Todo.model.TodoListModel', {
     extend:'Ext.data.Model',
+
+    requires: ['Todo.proxy.TodoListProxy'],
+
     config:{
         idProperty:'_id',
         fields:[
@@ -8,7 +11,6 @@ Ext.define('Todo.model.TodoListModel', {
         ],
 
         validations:[
-            // TODO provide some validation messages
             { field:'name', type:'presence', message: 'The ToDo list must have a name' }
         ],
 

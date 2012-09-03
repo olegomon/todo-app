@@ -13,10 +13,6 @@ Ext.define('Todo.view.TodoNavigation', {
         'Todo.view.TodoItemForm'
     ],
 
-    mixins: [
-//        'Deft.mixin.Controllable'
-    ],
-
     controller: 'Todo.controller.TodoNavigationBarController',
 
     config: {
@@ -32,53 +28,37 @@ Ext.define('Todo.view.TodoNavigation', {
             items: [
                 {
                     text  : 'New',
-                    action: 'createtodolist',
-//                    iconCls : 'add',
-//                    iconMask: true,
+                    action: 'createtodolist'
                 },
                 {
                     text  : 'Save',
                     action: 'savetodolist',
-                    hidden: true,
-//                    iconCls : 'add',
-//                    iconMask: true,
+                    hidden: true
                 },
                 {
                     text  : 'Delete',
                     action: 'deletetodolist',
-                    hidden: true,
-//                    iconCls : 'add',
-//                    iconMask: true,
+                    hidden: true
                 },
                 {
                     text  : 'New',
                     action: 'createtodoitem',
-                    hidden: true,
-//                    iconCls : 'compose',
-//                    iconMask: true,
+                    hidden: true
                 },
                 {
                     text  : 'Edit',
                     action: 'edittodoitem',
-                    hidden: true,
-//                    hidden: true
-//                    iconCls : 'compose',
-//                    iconMask: true,
+                    hidden: true
                 },
                 {
                     text  : 'Save',
                     action: 'savetodoitem',
-                    hidden: true,
-//                    hidden: true
-//                    iconCls : 'check2',
-//                    iconMask: true,
+                    hidden: true
                 },
                 {
                     text  : 'Delete',
                     action: 'deletetodoitem',
                     hidden: true
-//                    iconCls : 'trash',
-//                    iconMask: true,
                 }
             ]
         },

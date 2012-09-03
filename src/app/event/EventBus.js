@@ -3,5 +3,7 @@ Ext.define('Todo.event.EventBus', {
 
     requires: ['Todo.event.Event'],
 
-    mixins: ['Ext.mixin.Observable']
+    mixins: ['Ext.mixin.Observable'],
+
+    singleton: true
 });

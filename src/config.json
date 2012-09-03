@@ -4,15 +4,15 @@
         "mode" : "development",
 
         "production": {
-            "host" : "http://todows.woodly.c9.io"
+            "host" : "http://woodly.de:3000"
         },
 
         "development": {
-            "host" : "http://localhost:3000"
+            "host" : "http://woodly.de:3000"
         },
 
         "testing": {
-            "host" : "http://localhost:3000"
+            "host" : "http://woodly.de:3000"
         }
     }
 }
