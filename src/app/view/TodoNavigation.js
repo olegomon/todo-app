@@ -27,7 +27,7 @@ Ext.define('Todo.view.TodoNavigation', {
                 {
                     text  : 'New',
                     action: 'createtodoitem',
-                    hidden: true
+                    hidden: false
                 },
                 {
                     text  : 'Edit',

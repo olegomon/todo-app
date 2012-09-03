@@ -64,7 +64,6 @@ Ext.define('Todo.controller.TodoNavigationController', {
         navigation.push({
             xtype: 'todoitemform',
             title: 'New ToDo',
-            todoListId: listRecord.getId()
         });
     },
 

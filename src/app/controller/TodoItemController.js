@@ -1,14 +1,6 @@
 Ext.define('Todo.controller.TodoItemController', {
     extend:'Ext.app.Controller',
 
-//    mixins:[
-//        'Deft.mixin.Injectable'
-//    ],
-
-//    inject:{
-//        eventBus:'eventBus'
-//    },
-
     config:{
         // this property stub is made for injection
 //        eventBus:null,
@@ -30,7 +22,7 @@ Ext.define('Todo.controller.TodoItemController', {
     init:function () {
         // register event listeners
         var eventBus = this.getEventBus();
-        eventBus.addListener(Todo.Event.SAVE_TODO_ITEM, this.onTodoListDeleteEvent, this);
+        eventBus.addListener(Todo.Event.SAVE_TODO_ITEM, this.onTodoItemSaveEvent, this);
         eventBus.addListener(Todo.Event.DELETE_TODO_ITEM, this.onTodoItemDeleteEvent, this);
     },
 
@@ -38,7 +30,7 @@ Ext.define('Todo.controller.TodoItemController', {
         return Todo.app;
     },
 
-    onTodoListDeleteEvent:function () {
+    onTodoItemSaveEvent:function () {
         var me = this;
         var todoItemRecord = this.getTodoItemForm().getRecord();
         if (todoItemRecord) {
@@ -63,17 +55,14 @@ Ext.define('Todo.controller.TodoItemController', {
         } else {
             // create new record
             var values = this.getTodoItemForm().getValues();
-            var todoListId = this.getTodoItemForm().todoListId;
-            values.todoListId = todoListId;
             var newRecord = Ext.create('Todo.model.TodoItemModel', values);
 
             // add record manually to store
-            var store = Ext.getStore('TodoListStore');
-            var listRecord = store.getById(todoListId);
+            var store = Ext.getStore('TodoItemStore');
 
             newRecord.save({
                 success:function () {
-                    listRecord.todoItems().add(newRecord);
+                    store.add(newRecord);
                     Ext.Msg.alert("Save", "Successfully saved item.", function() {
                         me.getEventBus().fireEvent(Todo.Event.TODO_ITEM_SAVED);
                     });
