@@ -17,9 +17,10 @@ Ext.define('Todo.controller.TodoItemController', {
     },
 
     init:function () {
-        // register event listeners
-        Todo.EventBus.addListener(Todo.Event.SAVE_TODO_ITEM, this.onTodoItemSaveEvent, this);
-        Todo.EventBus.addListener(Todo.Event.DELETE_TODO_ITEM, this.onTodoItemDeleteEvent, this);
+        // TODO the following
+        // 1. register event listeners for item SAVE and DELETE events
+        // 2. handle events in onTodoItemSaveEvent() and onTodoItemDeleteEvent() respectively
+        // see also ToddNavigationController for examples
     },
 
     onTodoItemSaveEvent:function () {

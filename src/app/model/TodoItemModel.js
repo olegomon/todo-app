@@ -6,40 +6,10 @@ Ext.define('Todo.model.TodoItemModel', {
     config: {
         idProperty: '_id',
         fields: [
-            {name: '_id', type: 'auto'},
-            {name: 'name', type: 'string'},
-            {name: 'status', type: 'string'},
-            {name: 'priority', type: 'int'},
-            {name: 'description', type: 'string'},
-            {name: 'duedate', type: 'date', dateFormat: 'c', defaultValue: 0}
-        ],
+                // TODO add all fields of the web services (http://woodly.de:3000/api/todos)
+                // _id (auto), name, status, priority (int), description, duedate (date, dateFormat: 'c')
+        ]
 
-        validations: [
-            {type: 'presence', field: 'name'},
-            {type: 'length', field: 'name', min: 2},
-            {type: 'inclusion', field: 'status', list: ['Done', 'Open']}
-        ],
-
-        proxy: Ext.create('Todo.proxy.TodoItemProxy')
-    },
-
-    getName: function() {
-        return this.get('name');
-    },
-
-    getStatus: function() {
-        return this.get('status');
-    },
-
-    getPriority: function() {
-        return this.get('priority');
-    },
-
-    getDescription: function() {
-        return this.get('description');
-    },
-
-    getDueDate: function() {
-        return this.get('duedate');
+        // TODO set TodoItemProxy instance as proxy
     }
 });

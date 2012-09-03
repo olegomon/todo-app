@@ -6,8 +6,6 @@ Ext.define('Todo.controller.TodoNavigationBarController', {
     ],
 
     config: {
-        userNotifier: null,
-
         refs: {
             todoNavigation: 'todonavigation',
 
@@ -43,19 +41,21 @@ Ext.define('Todo.controller.TodoNavigationBarController', {
     },
 
     onEditTodoItemButtonTap: function () {
-        Todo.EventBus.fireEvent(Todo.Event.SHOW_EDIT_TODO_ITEM);
+        // TODO fire item show edit event
+        // Todo.EventBus.fireEvent(...)
+        // see also Todo.Event
     },
 
     onCreateTodoItemButtonTap: function () {
-        Todo.EventBus.fireEvent(Todo.Event.SHOW_CREATE_TODO_ITEM);
+        // TODO fire item show create event
     },
 
     onSaveTodoItemButtonTap: function () {
-        Todo.EventBus.fireEvent(Todo.Event.SAVE_TODO_ITEM);
+        // TODO fire item save event
     },
 
     onDeleteTodoItemButtonTap: function () {
-        Todo.EventBus.fireEvent(Todo.Event.DELETE_TODO_ITEM);
+        // TODO fire item delete event
     },
 
     onActiveItemChange: function (navigationview, value, oldValue, eOpts) {

@@ -8,9 +8,10 @@ Ext.define('Todo.store.TodoItemStore', {
 
     config: {
         model: 'Todo.model.TodoItemModel',
-        proxy: Ext.create('Todo.proxy.TodoItemProxy'),
-        autoLoad: true,
-        sorters: 'name',
+        // TODO set TodoItemProxy instance as proxy
+        // TODO set auto load true
+        // TODO sort by name
+        // see also web documentation
         emptyText: 'No items.'
     }
 });

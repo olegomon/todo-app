@@ -28,22 +28,11 @@ Ext.define('Todo.view.TodoItemForm', {
                         required: true,
                         label   : 'Name'
                     },
-                    {
-                        xtype  : 'selectfield',
-                        name   : 'status',
-                        label  : 'Status',
-                        value  : 'open',
-                        options: [
-                            {
-                                text : 'Open',
-                                value: 'open'
-                            },
-                            {
-                                text : 'Done',
-                                value: 'done'
-                            }
-                        ]
-                    },
+
+
+                    // TODO add a select field for field 'status' with options 'open' and 'done'
+
+
                     {
                         xtype  : 'selectfield',
                         name   : 'priority',

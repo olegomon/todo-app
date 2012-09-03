@@ -11,8 +11,6 @@ Ext.define('Todo.view.TodoNavigation', {
         'Todo.view.TodoItemForm'
     ],
 
-    controller: 'Todo.controller.TodoNavigationBarController',
-
     config: {
         navigationBar: {
 
@@ -26,7 +24,7 @@ Ext.define('Todo.view.TodoNavigation', {
             items: [
                 {
                     text  : 'New',
-                    action: 'createtodoitem',
+                    action: 'createtodoitem', // note: buttons will be referenced in the controller by their action
                     hidden: false
                 },
                 {
