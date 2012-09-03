@@ -9,15 +9,10 @@ Ext.define('Todo.controller.TodoNavigationController', {
     config: {
         refs: {
             todoNavigation: 'todonavigation',
-            todoList: 'todolist',
             todoItemList: 'todoitemlist'
         },
 
         control: {
-
-            todoList: {
-                itemtap: 'onTodoListItemTap'
-            },
 
             todoItemList: {
                 itemtap: 'onTodoItemTap'
@@ -71,19 +66,6 @@ Ext.define('Todo.controller.TodoNavigationController', {
         navigation.push({
             xtype : 'todoitemdetail',
             record: record
-        });
-
-        Ext.defer(function () {
-            list.deselect(index);
-        }, 300);
-    },
-
-    onTodoListItemTap: function (list, index, target, record, e, eOpts) {
-        var navigation = this.getTodoNavigation();
-        navigation.push({
-            xtype: 'todoitemlist',
-            store: record.todoItems(),
-            listRecord: record
         });
 
         Ext.defer(function () {
