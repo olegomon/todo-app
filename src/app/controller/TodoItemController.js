@@ -18,11 +18,11 @@ Ext.define('Todo.controller.TodoItemController', {
 
     init:function () {
         // register event listeners
-        Todo.EventBus.addListener(Todo.Event.SAVE_TODO_ITEM, this.onTodoListDeleteEvent, this);
+        Todo.EventBus.addListener(Todo.Event.SAVE_TODO_ITEM, this.onTodoItemSaveEvent, this);
         Todo.EventBus.addListener(Todo.Event.DELETE_TODO_ITEM, this.onTodoItemDeleteEvent, this);
     },
 
-    onTodoListDeleteEvent:function () {
+    onTodoItemSaveEvent:function () {
         var todoItemRecord = this.getTodoItemForm().getRecord();
         if (todoItemRecord) {
             // update record
