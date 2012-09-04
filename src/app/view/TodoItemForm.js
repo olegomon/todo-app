@@ -11,6 +11,10 @@ Ext.define('Todo.view.TodoItemForm', {
         'Ext.field.DatePicker',
     ],
 
+    mixins: ['Deft.mixin.Controllable'],
+
+    controller: 'Todo.controller.TodoItemController',
+
     config: {
         title   : 'New ToDo',
         defaults: {

@@ -14,7 +14,7 @@ Ext.define('Todo.view.TodoNavigation', {
     ],
 
     mixins: [
-//        'Deft.mixin.Controllable'
+        'Deft.mixin.Controllable'
     ],
 
     controller: 'Todo.controller.TodoNavigationBarController',

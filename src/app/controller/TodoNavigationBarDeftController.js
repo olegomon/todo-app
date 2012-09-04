@@ -1,4 +1,4 @@
-Ext.define('Todo.controller.TodoNavigationBarController', {
+Ext.define('Todo.controller.TodoNavigationBarDeftController', {
     extend: 'Deft.mvc.ViewController',
 
     requires: [

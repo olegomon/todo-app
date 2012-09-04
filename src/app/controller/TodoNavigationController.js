@@ -1,13 +1,13 @@
 Ext.define('Todo.controller.TodoNavigationController', {
     extend: 'Ext.app.Controller',
 
-//    mixins: [
-//        'Deft.mixin.Injectable'
-//    ],
+    mixins: [
+        'Deft.mixin.Injectable'
+    ],
 
-//    inject: {
-//        eventBus: 'eventBus'
-//    },
+    inject: {
+        eventBus: 'eventBus'
+    },
 
     config: {
         // this property stub is made for injection
@@ -53,10 +53,6 @@ Ext.define('Todo.controller.TodoNavigationController', {
         eventBus.addListener(Todo.Event.TODO_ITEM_SAVED, this.onTodoItemSavedEvent, this);
         eventBus.addListener(Todo.Event.TODO_ITEM_DELETED, this.onTodoItemDeleted, this);
 
-    },
-
-    getEventBus: function() {
-        return Todo.app;
     },
 
     onTodoNavigationActivate: function (list, eOpts) {

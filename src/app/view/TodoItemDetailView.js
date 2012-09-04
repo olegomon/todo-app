@@ -3,9 +3,9 @@ Ext.define('Todo.view.TodoItemDetailView', {
 
     xtype: 'todoitemdetail',
 
-    requires: [
+    mixins: ['Deft.mixin.Controllable'],
 
-    ],
+    controller: 'Todo.controller.TodoItemDetailController',
 
     config: {
         title     : 'Todo Detail',
@@ -41,50 +41,4 @@ Ext.define('Todo.view.TodoItemDetailView', {
             '</div>'
         ]
     }
-
-//        /**
-//         * Updates the record of all sub items of this form.
-//         *
-//         * @param newRecord
-//         * @param oldRecord
-//         */
-//        updateRecord: function (newRecord, oldRecord) {
-//            var me = this;
-//            me.callOverridden(arguments);
-//            me.getItems().each(function (item) {
-//                if (typeof item.setRecord == 'function') {
-//                    item.setRecord(newRecord);
-//                }
-//
-//                //set record on all subitems
-//                if (typeof item.getItems == 'function') {
-//                    var subItems = item.getItems();
-//                    if (subItems.getCount() > 0) {
-//                        me.setSubItemRecord(item, newRecord, me);
-//                    }
-//                }
-//            });
-//        },
-//
-//        /**
-//         * @private
-//         * @param subItem
-//         * @param record
-//         */
-//        setSubItemRecord: function (subItem, record, scope) {
-//            var me = scope;
-//            subItem.getItems().each(function (item) {
-//                if (typeof item.setRecord == 'function') {
-//                    item.setRecord(record);
-//                }
-//
-//                //set record on all subitems
-//                if (typeof item.getItems == 'function') {
-//                    var subItems = item.getItems();
-//                    if (subItems.getCount() > 0) {
-//                        me.setSubItemRecord(item, record);
-//                    }
-//                }
-//            });
-//        },
 });

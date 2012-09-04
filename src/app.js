@@ -5,8 +5,6 @@ Ext.Loader.setConfig({
     }
 });
 
-//Ext.require(['Todo.config.Properties']);
-
 Ext.require(['Todo.config.AppContext'],
     function () {
         Todo.AppContext.configure();
@@ -25,10 +23,9 @@ Ext.application({
         'TodoItemModel'
     ],
     stores: ['TodoListStore', 'TodoItemStore'],
+
     controllers: [
         'TodoNavigationController',
-        'TodoNavigationBarController',
-        'TodoItemController',
         'TodoListController'
     ],
     views: ['TodoNavigation'],
@@ -57,7 +54,6 @@ Ext.application({
 
         // Initialize the main view
         Ext.Viewport.add(Ext.create('Todo.view.TodoNavigation'));
-//        Ext.Viewport.add(Ext.create('Todo.view.TodoItemForm'));
     },
 
     onUpdated: function() {

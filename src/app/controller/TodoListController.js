@@ -1,24 +1,11 @@
 Ext.define('Todo.controller.TodoListController', {
     extend:'Ext.app.Controller',
 
-//    mixins:[
-//        'Deft.mixin.Injectable'
-//    ],
-
-//    inject:{
-//        eventBus:'eventBus'
-//    },
-
     config:{
-        // this property stub is made for injection
-//        eventBus:null,
 
         refs:{
             todoListForm:'todolistform',
             todoItemList:'todoitemlist'
-        },
-
-        control:{
         }
     },
 
