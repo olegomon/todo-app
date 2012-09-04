@@ -25,13 +25,17 @@ Ext.define('Todo.model.TodoListModel', {
                 primaryKey:'_id',
                 foreignKey:'todoListId',
 
+                // note: since child stores are created upon request their configuration has to be done here ...
                 store: {
+
                     grouper: {
                         groupFn: function (record) {
                             var name = record.get('name');
                             return name ? name[0].toUpperCase() : '';
                         }
-                    }
+                    },
+
+                    proxy: Ext.create('Todo.proxy.TodoItemProxy')
                 }
 
             }
