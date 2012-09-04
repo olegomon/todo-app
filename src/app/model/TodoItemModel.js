@@ -1,5 +1,8 @@
 Ext.define('Todo.model.TodoItemModel', {
     extend: 'Ext.data.Model',
+    requires: [
+        'Todo.proxy.TodoItemProxy'
+    ],
     config: {
         idProperty: '_id',
         fields: [
@@ -27,8 +30,9 @@ Ext.define('Todo.model.TodoItemModel', {
                 foreignKey: 'todoListId'
             }
         ],
-
-        proxy: Ext.create('Todo.proxy.TodoItemProxy')
+        proxy: {
+            type: 'todoitemproxy'
+        }
     },
 
     getName: function() {

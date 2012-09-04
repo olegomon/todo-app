@@ -6,6 +6,8 @@ Ext.define('Todo.config.Properties', {
 
     properties: {
 
+        host: 'http://localhost:3000',
+
         /**
          * ToDoApp service endpoint
          */
@@ -27,7 +29,8 @@ Ext.define('Todo.config.Properties', {
     },
 
     getHost: function () {
-        var host = config[config.mode].host;
+        var properties = this.getProperties();
+        var host = properties.host;
         return host;
     },
 

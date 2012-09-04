@@ -14,6 +14,10 @@ Ext.define('Todo.store.TodoListStore', {
 
         autoLoad: true,
 
+        proxy: {
+            type: 'todolistproxy'
+        },
+
         grouper: {
             groupFn: function (record) {
                 var title = record.get('name');

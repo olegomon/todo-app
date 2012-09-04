@@ -19,9 +19,7 @@ Ext.define('Testing.config.TestAppContext', {
             eventBus: {
                 className: 'Todo.event.EventBus'
             },
-            userNotifier: {
-                className: 'Todo.util.UserNotifier'
-            },
+
             // service URLs
             properties  : {
                 className: 'Testing.config.Properties'

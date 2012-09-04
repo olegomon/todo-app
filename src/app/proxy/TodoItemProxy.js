@@ -1,6 +1,8 @@
 Ext.define('Todo.proxy.TodoItemProxy', {
     extend: 'Ext.data.proxy.Rest',
 
+    alias: 'proxy.todoitemproxy',
+
     mixins: [
         'Deft.mixin.Injectable'
     ],
@@ -11,12 +13,8 @@ Ext.define('Todo.proxy.TodoItemProxy', {
 
     config: {
         serviceProperties: null,
-        type: 'rest',
         reader: {
             type: 'json'
-//            rootProperty: 'data',
-//            countProperty: 'count',
-//            successProperty: 'success'
         }
     },
 

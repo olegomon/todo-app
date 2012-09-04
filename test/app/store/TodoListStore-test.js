@@ -5,14 +5,14 @@ var format = buster.format;
 buster.testCase("TodoListStore", {
 
     setUp : function(done) {
+//        Properties.getProperties().host = '';
+//        Properties.getProperties().todolists = 'api/todolists';
+//        Properties.getProperties().todoitems = 'api/todoitems';
+
         this.store = Ext.create('Todo.store.TodoListStore');
         this.store.load(function(records, operation, success) {
             done();
         });
-    },
-
-    tearDown : function() {
-
     },
 
     "should be auto load enabled": function () {
@@ -31,8 +31,7 @@ buster.testCase("TodoListStore", {
 
         store.load(function() {
             assert.equals(store.getCount(), 1, "the store must have one password after loading");
-//            TODO FIX me!!!!
-//            assert.equals(store.getAt(0).getListName(), 'list');
+            assert.equals(store.getAt(0).getListName(), 'list');
             done();
         });
 

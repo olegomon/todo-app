@@ -5,7 +5,7 @@ Ext.Loader.setConfig({
     }
 });
 
-Ext.syncRequire(['Todo.i18n.Messages']);
+//Ext.require(['Todo.config.Properties']);
 
 Ext.require(['Todo.config.AppContext'],
     function () {

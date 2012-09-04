@@ -1,4 +1,10 @@
-//"use strict";
+//var config = {
+//    "mode" : "testing",
+//    "testing": {
+//        "host" : ''
+//    }
+//};
+
 Ext.Loader.setConfig({
 //    enabled: true,
     paths  : {

@@ -19,11 +19,8 @@ Ext.define('Todo.config.AppContext', {
 
     configure: function () {
         Deft.Injector.configure({
-
-            eventBus    : {
-                fn: function () {
-                    return Ext.create('Todo.event.EventBus');
-                }
+            eventBus     : {
+                className: 'Todo.event.EventBus'
             },
             userNotifier: {
                 className: 'Todo.util.UserNotifier'

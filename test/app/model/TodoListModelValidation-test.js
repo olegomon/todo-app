@@ -12,7 +12,6 @@ buster.assertions.add("exists", {
 describe("Todo List Model Validation of", function(){
 
     var todoList;
-    var todoListData;
 
     beforeEach(function() {
         todoList = Ext.create('Todo.model.TodoListModel');
