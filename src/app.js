@@ -2,7 +2,8 @@ Ext.application({
     name: 'Todo',
 
     requires: [
-        'Ext.MessageBox'
+        'Ext.MessageBox',
+        'Todo.proxy.TodoItemProxy'
     ],
 
     models: [
