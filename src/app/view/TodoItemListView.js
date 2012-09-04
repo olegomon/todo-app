@@ -2,6 +2,8 @@ Ext.define('Todo.view.TodoItemListView', {
     extend: 'Ext.List',
     xtype : 'todoitemlist',
 
+    requires: ['Ext.data.Store'],
+
     config: {
         data: [
             {

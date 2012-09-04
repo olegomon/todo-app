@@ -1,11 +1,3 @@
-Ext.Loader.setConfig({
-    paths: {
-        'Todo': 'app'
-    }
-});
-
-Ext.syncRequire(['Todo.i18n.Messages']);
-
 Ext.application({
     name: 'Todo',
 
