@@ -10,6 +10,9 @@ Ext.define('Todo.view.TodoItemList', {
         title: 'My Todo Items',
         store: 'TodoItemStore',
 
+        grouped: true,
+        groupDir: 'ASC',
+
         itemTpl: '{name}',
 
         emptyText: 'No Todo Items found.'
