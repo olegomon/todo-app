@@ -1,7 +1,9 @@
 Ext.define('Todo.model.TodoListModel', {
     extend:'Ext.data.Model',
 
-    requires: ['Todo.proxy.TodoListProxy'],
+    requires: [
+        'Todo.proxy.TodoListProxy'
+    ],
 
     config:{
         idProperty:'_id',
@@ -21,7 +23,17 @@ Ext.define('Todo.model.TodoListModel', {
                 name:'todoItems',
                 associationKey:'todoItems',
                 primaryKey:'_id',
-                foreignKey:'todoListId'
+                foreignKey:'todoListId',
+
+                store: {
+                    grouper: {
+                        groupFn: function (record) {
+                            var name = record.get('name');
+                            return name ? name[0].toUpperCase() : '';
+                        }
+                    }
+                }
+
             }
         ],
 

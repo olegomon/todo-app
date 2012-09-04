@@ -13,11 +13,13 @@ Ext.define('Todo.store.TodoItemStore', {
 
         sorters: 'name',
 
+        autoLoad: false,
+
         grouper: {
             groupFn: function (record) {
-                return "";
-//                var name = record.get('name');
-//                return name ? name[0].toUpperCase() : '';
+//                return "";
+                var name = record.get('name');
+                return name ? name[0].toUpperCase() : '';
             }
         }
     }
