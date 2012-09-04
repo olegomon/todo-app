@@ -21,7 +21,17 @@ Ext.define('Todo.model.TodoListModel', {
                 name:'todoItems',
                 associationKey:'todoItems',
                 primaryKey:'_id',
-                foreignKey:'todoListId'
+                foreignKey:'todoListId',
+
+                store: {
+                    grouper: {
+                        groupFn: function (record) {
+                            var title = record.get('name');
+                            return title ? title[0].toUpperCase() : '';
+                        }
+                    }
+                }
+
             }
         ],
 

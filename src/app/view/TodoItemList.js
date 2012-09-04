@@ -10,8 +10,8 @@ Ext.define('Todo.view.TodoItemList', {
         title: 'My Todo Items',
         store: 'TodoItemStore',
 
-//        groupDir  : 'DESC',
-//        grouped: true,
+        grouped: true,
+        groupDir  : 'DESC',
 
         itemTpl: '{name}',
 
