@@ -19,7 +19,7 @@ Ext.define('Todo.controller.TodoListController', {
     init: function () {
         // register event listeners
         Todo.EventBus.addListener(Todo.Event.SAVE_TODO_LIST, this.onTodoListSaveEvent, this);
-        Todo.EventBus.addListener(Todo.Event.DELETE_TODO_LIST, this.onTodoListDeleteEvent, this);
+        Todo.EventBus.addListener(Todo.Event.DELETE_TODO_LIST, this.onTodoItemSaveEvent, this);
     },
 
     onTodoListSaveEvent:function () {
@@ -59,7 +59,7 @@ Ext.define('Todo.controller.TodoListController', {
         }
     },
 
-    onTodoListDeleteEvent:function () {
+    onTodoItemSaveEvent:function () {
         var todoListRecord = me.getTodoItemList().listRecord;
         todoListRecord.erase({
             success:function () {
