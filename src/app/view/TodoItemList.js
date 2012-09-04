@@ -11,7 +11,7 @@ Ext.define('Todo.view.TodoItemList', {
         store: 'TodoItemStore',
 
         autoLoad: true,
-        
+
         grouped: true,
         groupDir: 'ASC',
 
