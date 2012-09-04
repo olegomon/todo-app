@@ -1,41 +1,30 @@
 Ext.define('Todo.controller.TodoListFormController', {
-    // TODO extend from Deft.JS ViewController
-    extend:'Ext.app.Controller',
+    extend:'Deft.mvc.ViewController',
 
-    // TODO setup Deft.JS injection
-    // TODO setup mixin for injection
-    // TODO define inject block and inject event bus
+    mixins: ['Deft.mixin.Injectable'],
 
-
-    config:{
-
-        // TODO setup up eventBus property for getters and setters
-
-        refs:{
-            todoListForm:'todolistform',
-            todoItemList:'todoitemlist'
-        }
+    inject: {
+        eventBus: 'eventBus'
     },
 
-    // TODO define control: {} block if required
-    // TODO use getters and setters where needed
+    config:{
+        eventBus: null
+    },
 
     init: function () {
         // register event listeners
-
-        // TODO use injected event bus
-        Todo.app.addListener(Todo.Event.SAVE_TODO_LIST, this.onTodoListSaveEvent, this);
+        this.getEventBus().addListener(Todo.Event.SAVE_TODO_LIST, this.onTodoListSaveEvent, this);
     },
 
     onTodoListSaveEvent:function () {
         var me = this;
-        var todoItemRecord = me.getTodoListForm().getRecord();
+        var todoItemRecord = me.getView().getRecord();
         if (todoItemRecord) {
             // Edit list name is not implemented yet :(
             Ext.Msg.alert('Info', 'Not Implemented');
         } else {
             // create new record
-            var values = this.getTodoListForm().getValues();
+            var values = this.getView().getValues();
             var todoList = Ext.create('Todo.model.TodoListModel', values);
 
             var errors = todoList.validate();
@@ -47,8 +36,7 @@ Ext.define('Todo.controller.TodoListFormController', {
                     success:function () {
                         store.add(todoList);
                         Ext.Msg.alert("Save", "Successfully saved list.", function() {
-                            // TODO use injected event bus
-                            Todo.app.fireEvent(Todo.Event.TODO_LIST_SAVED);
+                            me.getEventBus().fireEvent(Todo.Event.TODO_LIST_SAVED);
                         });
                     },
                     failure:function () {
