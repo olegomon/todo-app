@@ -22,6 +22,7 @@ Ext.syncRequire(['Testing.config.TestAppContext'], function () {
 
 Ext.application({
     name: 'Todo',
+    stores: ['TodoListStore', 'TodoItemStore'],
     launch: function () {
         if (buster != undefined && buster.hasOwnProperty('run')) {
             buster.run();

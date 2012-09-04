@@ -24,9 +24,10 @@ Ext.application({
     ],
     stores: ['TodoListStore', 'TodoItemStore'],
 
+    // TODO remove unused sencha controllers from this list
     controllers: [
         'TodoNavigationController',
-        'TodoListController'
+        'TodoListFormController'
     ],
     views: ['TodoNavigation'],
 

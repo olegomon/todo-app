@@ -9,6 +9,7 @@ buster.testCase("TodoNavigationDeftController",  {
     },
 
     "todo navigation bar controller is set" : function() {
-//        assert(this.navigation.getNavigationBar().getController());
+        assert(this.navigation.getController());
+        assert.equals(Ext.getClassName(this.navigation.getController()), 'Todo.controller.TodoNavigationBarController');
     }
 });

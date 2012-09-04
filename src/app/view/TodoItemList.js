@@ -6,6 +6,10 @@ Ext.define('Todo.view.TodoItemList', {
         'Todo.store.TodoItemStore'
     ],
 
+    mixins: ['Deft.mixin.Controllable'],
+
+    controller: 'Todo.controller.TodoItemListController',
+
     config: {
         title: 'My Todo Items',
         store: 'TodoItemStore',

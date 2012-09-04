@@ -3,6 +3,10 @@ Ext.define('Todo.view.TodoListForm', {
 
     xtype: 'todolistform',
 
+    // TODO connect Deft.JS ViewController for this view
+    // TODO setup mixin
+    // TODO define "controller" field
+
     requires: [
         'Ext.form.FieldSet',
         'Ext.field.Text'
